@@ -1,0 +1,131 @@
+---
+// HowItWorks.astro
+import SectionHeader from "./VehicleTrackingSystem/VTSHeader.astro";
+import WorkingSteps from "./VehicleTrackingSystem/VTSWorkingSteps.astro";
+import SystemDiagram from "./VehicleTrackingSystem/VTSSystemDiagram.astro";
+import SystemFeatures from "./VehicleTrackingSystem/VTSSystemFeatures.astro";
+import AppDownloadSection from "./VehicleTrackingSystem/VTSAppDownload.astro";
+
+const {
+  title_header,
+  highlight_header,
+  description_header,
+  working_steps = [],
+  working_link,
+  working_iosLink,
+  working_path,
+  working_download_text_android_1,
+  working_download_text_android_2,
+  working_download_text_ios_1,
+  working_download_text_ios_2,
+  diagram_icons = [],
+  features_steps = [],
+  features_title,
+  features_subtitle,
+  appDownload_title,
+  appDownload_subtitle,
+  appDownload_features = [],
+  playStoreLink,
+  playStoreBadgeSrc,
+  path_ios,
+  appStoreLink,
+  appStoreBadgeSrc,
+} = Astro.props;
+---
+
+<section class="how-it-works">
+  <div class="container">
+    <SectionHeader
+      title={title_header}
+      highlight={highlight_header}
+      description={description_header}
+    />
+
+    <div class="main-content">
+      <WorkingSteps
+        steps={working_steps}
+        link={working_link}
+        iosLink={working_iosLink}
+        path={working_path}
+        download_text_1={working_download_text_android_1}
+        download_text_2={working_download_text_android_2}
+        download_text_3={working_download_text_ios_1}
+        download_text_4={working_download_text_ios_2}
+        path_ios={path_ios}
+      />
+
+      <SystemDiagram icons={diagram_icons} />
+    </div>
+
+    <SystemFeatures
+      features={features_steps}
+      headerTitle={features_title}
+      headerSubtitle={features_subtitle}
+    />
+
+    <AppDownloadSection
+      title={appDownload_title}
+      subtitle={appDownload_subtitle}
+      features={appDownload_features}
+      playStoreLink={playStoreLink}
+      playStoreBadgeSrc={playStoreBadgeSrc}
+      appStoreLink={appStoreLink}
+      appStoreBadgeSrc={appStoreBadgeSrc}
+    />
+  </div>
+</section>
+
+<!-- CSS unchanged -->
+
+<style>
+  .how-it-works {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .how-it-works::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23667eea' fill-opacity='0.03'%3E%3Cpath d='M20 20c0 11.046-8.954 20-20 20s-20-8.954-20-20 8.954-20 20-20 20 8.954 20 20zm-10 0c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10 10 4.477 10 10z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 8rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .main-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .how-it-works {
+      padding: 3rem 0;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+  }
+</style>

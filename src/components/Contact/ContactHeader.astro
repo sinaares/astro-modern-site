@@ -1,0 +1,35 @@
+---
+const { title, lead } = Astro.props;
+---
+
+<div class="contact-header">
+  <h2>{title}</h2>
+  <p class="lead">{lead}</p>
+</div>
+
+<style>
+  .contact-header {
+    margin-top: -3rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-header h2 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+  }
+  .contact-header .lead {
+    font-size: 1.25rem;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+  @media (max-width: 768px) {
+    .contact-header h2 {
+      font-size: 2rem;
+    }
+  }
+</style>

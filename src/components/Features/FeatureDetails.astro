@@ -1,0 +1,80 @@
+---
+import DetailItem from "./DetailItem.astro";
+interface detail {
+  id: string;
+  title: string;
+  content: string[];
+  link: string;
+  icon: string;
+}
+interface Props {
+  details: detail[];
+}
+const { details } = Astro.props as Props;
+---
+
+<section class="features-section">
+  <div class="features-center-container">
+    <div class="features-columns">
+      {
+        details.map((detail, index) => (
+          <DetailItem
+            id={detail.id}
+            icon={detail.icon}
+            title={detail.title}
+            content={detail.content}
+            link={detail.link}
+            index={index}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
+  }
+
+  .features-center-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .features-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1000px; /* Increased from 800px to 1000px */
+    padding: 0 2rem;
+  }
+
+  /* Animation styles */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .features-columns {
+      max-width: 900px; /* Slightly smaller on medium screens */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .features-columns {
+      max-width: 100%;
+      padding: 0 1.5rem;
+    }
+  }
+</style>

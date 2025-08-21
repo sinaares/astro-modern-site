@@ -1,0 +1,133 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SDS from "../../components/SDS.astro";
+const SDS_Managment_Data = {
+  hero_subtitle: "TNB Mobil",
+  hero_title1: "Sürüş Performans",
+  hero_title2: "Takip & Analiz Sistemi",
+  hero_description:
+    "Sürüş güvenliği ve filo verimliliğini artırmak için geliştirilen sistem, araçlara entegre edilen takip cihazları aracılığıyla hız, konum, G-sensör gibi verileri toplayarak sürücü davranışlarını analiz eder ve performans puanları oluşturur.",
+
+  overview_title: "Sistem Genel Bakış",
+  overview_path:
+    "M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10V6c0-2-2-4-4-4H4c-2 0-4 2-4 4v10c0 1.1.9 2 2 2h2",
+  overview_description:
+    "Sürüş Performans Takip ve Analiz Sistemi, araçlara entegre edilen takip cihazları ile hız, konum, G-sensör verilerini toplayarak sürücü davranışlarını analiz eder. Hız limitlerine uyum, ani frenlemeler, sert dönüşler ve ani ivmelenmeleri tespit ederek performans puanları oluşturur. Bu veriler haftalık, aylık ya da görev bazlı raporlarla analiz edilerek yöneticilere sunulur.",
+
+  features_title: "Temel Özellikler",
+  features_list: [
+    {
+      icon: "M22,12 18,12 15,21 9,3 6,12 2,12", // polyline for checkmark-like shape
+      title: "Gerçek Zamanlı Veri Toplama",
+      description:
+        "Araçlardan anlık veri toplama ve analiz işlemleri gerçek zamanlı olarak gerçekleştirilir.",
+    },
+    {
+      icon: "M12 2v6.5 M19.07 4.93l-4.6 4.6 M12 12r1 M5 12H2 M22 12h-3 m4.93 19.07l-4.6-4.6 M12 21.5V15 M19.07 19.07l-4.6-4.6",
+      title: "Detaylı Sürüş Davranışı Analizi",
+      description:
+        "Hız, frenleme ve dönüş gibi sürüş davranışlarının kapsamlı değerlendirilmesi ve analizi.",
+    },
+    {
+      icon: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 7a4 4 0 1 1 8 0 M22 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75",
+      title: "Sürücü Bazlı Performans Puanlama",
+      description:
+        "Her sürücü için ayrı performans puanları hesaplanarak bireysel değerlendirme yapılır.",
+    },
+    {
+      icon: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2 14 8 20 8 M16 13H8 M16 17H8 M10 9 9 9 8 9",
+      title: "Özelleştirilebilir Raporlar",
+      description:
+        "Zaman aralığına veya görev birimine göre detaylı raporlama ve analiz imkânı.",
+    },
+    {
+      icon: "M2 3h20v14H2z M8 21h8 M12 17v4",
+      title: "Web Tabanlı Kontrol Paneli",
+      description:
+        "Kullanıcı dostu, web tabanlı arayüz ile kolay erişim ve yönetim imkânı.",
+    },
+    {
+      icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+      title: "Güvenlik Odaklı Analiz",
+      description:
+        "Tehlikeli sürüş alışkanlıklarının erken tespiti ile iş güvenliği artırımı sağlanır.",
+    },
+  ],
+
+  benefits_title: "Sistem Faydaları",
+  benefits_list: [
+    {
+      title: "Güvenli Sürüşü Teşvik Eder",
+      description:
+        "Tehlikeli sürüş alışkanlıkları erken tespit edilerek iş güvenliği artırılır ve kaza riskları minimize edilir.",
+    },
+    {
+      title: "Maliyetleri Düşürür",
+      description:
+        "Verimli sürüş alışkanlıkları sayesinde yakıt tüketimi ve bakım maliyetleri önemli ölçüde azaltılır.",
+    },
+    {
+      title: "Araç Ömrünü Uzatır",
+      description:
+        "Ani manevraların azaltılmasıyla araçların mekanik aksamları daha uzun süre sağlıklı kalır.",
+    },
+    {
+      title: "Operasyonel Verimlilik Sağlar",
+      description:
+        "Sürücü performanslarının düzenli takibi, yönetim kararlarını destekler ve verimliliği artırır.",
+    },
+  ],
+
+  // Added R&D Section info as extra (optional)
+  security_title: "AR-GE ile Güçlendirilmiş Altyapı",
+  security_description:
+    'Proje kapsamında yapılan AR-GE çalışmalarıyla, farklı yol ve sürüş koşullarında testler gerçekleştirilmiş; hız, frenleme ve dönüş verilerine göre "güvenli sürüş" kriterleri belirlenmiştir. Sürüş verilerinin analizi için farklı algoritmalar değerlendirilmiş, en etkin yöntemler sistemimize entegre edilmiştir.',
+  security_features: [
+    { icon: "🔬", label: "Kapsamlı AR-GE Çalışmaları" },
+    { icon: "🛣️", label: "Farklı Yol Koşulları Testi" },
+    { icon: "⚙️", label: "Gelişmiş Algoritma Entegrasyonu" },
+  ],
+  security_path: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+  performance_title: "Performans Metrikleri",
+  performance_metrics: [
+    {
+      icon_path:
+        "M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3",
+      title: "Hız Kontrolü",
+      description: "Hız limitlerine uyum ve aşım durumlarının detaylı takibi",
+    },
+    {
+      icon_path: 'circle cx="12" cy="12" r="3" M12 1v6m0 6v6 M21 12h-6m-6 0H3',
+      title: "G-Sensör Analizi",
+      description: "Ani frenlemeler, ivmelenmeler ve dönüşlerin ölçümü",
+    },
+    {
+      icon_path:
+        'polyline points="21,8 21,21 3,21 3,8" rect x="1" y="3" width="22" height="5" line x1="10" y1="12" x2="14" y2="12"',
+      title: "Rota Optimizasyonu",
+      description:
+        "Konum verilerine dayalı rota analizi ve optimizasyon önerileri",
+    },
+  ],
+};
+---
+
+<Layout title="Sürüş Performans">
+  <SDS
+    hero_subtitle={SDS_Managment_Data.hero_subtitle}
+    hero_title1={SDS_Managment_Data.hero_title1}
+    hero_title2={SDS_Managment_Data.hero_title2}
+    hero_description={SDS_Managment_Data.hero_description}
+    overview_title={SDS_Managment_Data.overview_title}
+    overview_path={SDS_Managment_Data.overview_path}
+    overview_description={SDS_Managment_Data.overview_description}
+    features_title={SDS_Managment_Data.features_title}
+    features_list={SDS_Managment_Data.features_list}
+    security_title={SDS_Managment_Data.security_title}
+    security_description={SDS_Managment_Data.security_description}
+    security_features={SDS_Managment_Data.security_features}
+    security_path={SDS_Managment_Data.security_path}
+    benefits_title={SDS_Managment_Data.benefits_title}
+    benefits_list={SDS_Managment_Data.benefits_list}
+  />
+</Layout>

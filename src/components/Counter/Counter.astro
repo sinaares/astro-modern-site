@@ -1,0 +1,107 @@
+---
+const { target, number, label } = Astro.props;
+---
+
+<div>
+  <div class="counter-container">
+    <div class="counter-content">
+      <span id={target} class="count-number" data-target={number}>0</span>
+      <p class="count-label">{label}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .counter-container {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 1rem auto;
+    transition: transform 0.3s ease;
+  }
+
+  .counter-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .counter-content {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .count-number {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #60a5fa, #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .count-label {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    color: #60a5fa;
+  }
+
+  @media (min-width: 600px) and (max-width: 1024px) {
+    .counter-container {
+      width: 90%;
+      height: auto;
+      padding: 1rem 0;
+    }
+
+    .count-number {
+      font-size: 2.5rem;
+    }
+
+    .count-label {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const targetNumber = parseInt(el.getAttribute("data-target"));
+            let current = 0;
+            const increment = targetNumber / 100;
+
+            const counter = setInterval(() => {
+              current += increment;
+              if (current >= targetNumber) {
+                el.textContent = targetNumber;
+                clearInterval(counter);
+              } else {
+                el.textContent = Math.floor(current);
+              }
+            }, 30);
+
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    document
+      .querySelectorAll(".count-number")
+      .forEach((el) => observer.observe(el));
+  });
+</script>

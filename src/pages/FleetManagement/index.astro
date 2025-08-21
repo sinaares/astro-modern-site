@@ -1,0 +1,77 @@
+---
+// src/pages/FleetManagement.astro
+import Layout from "../../layouts/Layout.astro";
+import FleetManagement from "../../components/FleetManagement.astro";
+
+const fleetManagmentData = {
+  hero_subtitle: "TNB Mobil",
+  hero_title1: "Filo",
+  hero_title2: "Yönetim Sistemi",
+  hero_description:
+    "Filo Yönetim Sistemi, işletmenize ait tüm araçların yaşam döngüsünü uçtan uca takip etmenize olanak tanır. Bakım planlaması, muayene tarihleri, sigorta süreçleri ve sözleşme yönetimi gibi operasyonel unsurlar tek bir merkezi panel üzerinden izlenebilir.",
+  overview_title: "Sistem Genel Bakış",
+  overview_path:
+    "M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1",
+  overview_description:
+    "Karmaşık filo yönetimi süreçlerini sadeleştiren sistemimiz, manuel hataların önüne geçerken operasyonel süreklilik sağlar. Tüm araçlarınızın yaşam döngüsünü tek bir platformdan yönetebilir, gerçek zamanlı verilerle doğru kararlar alabilirsiniz.",
+  features_title: "Sistem Özellikleri ve Avantajları",
+  features_list: [
+    {
+      icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z M9 12l2 2 4-4",
+      title: "Kapsamlı Takip",
+      description:
+        "Periyodik bakım, muayene tarihleri, sigorta süreçleri ve sözleşme yönetimi gibi tüm operasyonel unsurlar tek merkezden izlenir.",
+    },
+    {
+      icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+      title: "Entegrasyon Kabiliyeti",
+      description:
+        "ERP, muhasebe ve insan kaynakları yazılımlarıyla entegre çalışarak tüm süreçleri tek platformda birleştirin.",
+    },
+  ],
+  security_title: "Neden TNB Mobil Filo Yönetimi?",
+  security_description:
+    "TNB Mobil olarak geliştirdiğimiz bu sistem; kullanıcı dostu arayüzü, entegrasyon kabiliyeti ve güvenlik odaklı altyapısıyla fark yaratır. Kurum içi onay mekanizmaları, yetkilendirme sistemleri ve özelleştirilebilir raporlar sayesinde filonuz üzerinde tam kontrol sağlarsınız.",
+  security_features: [
+    { icon: "🚗", label: "Tüm Araçlar Tek Platformda" },
+    { icon: "⏰", label: "Otomatik Hatırlatmalar" },
+    { icon: "📊", label: "Detaylı Maliyet Analizleri" },
+  ],
+  security_path:
+    "M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1",
+  benefits_title: "İşletmenize Katkıları",
+  benefits_list: [
+    {
+      title: "Maliyet Kontrolü",
+      description:
+        "Yakıt tüketimi, bakım masrafları ve diğer operasyonel giderleri detaylı şekilde analiz ederek maliyetlerinizi optimize edin.",
+    },
+    {
+      title: "Yasal Uyum",
+      description:
+        "Muayene, sigorta ve sözleşme süreçlerini takip ederek yasal ihlallerin önüne geçin, kurumsal itibarınızı koruyun.",
+    },
+    // Add more default benefit items here if you want
+  ],
+};
+---
+
+<Layout title="Filo Yönetim Sistemi | TNB Mobil">
+  <FleetManagement
+    hero_subtitle={fleetManagmentData.hero_subtitle}
+    hero_title1={fleetManagmentData.hero_title1}
+    hero_title2={fleetManagmentData.hero_title2}
+    hero_description={fleetManagmentData.hero_description}
+    overview_title={fleetManagmentData.overview_title}
+    overview_path={fleetManagmentData.overview_path}
+    overview_description={fleetManagmentData.overview_description}
+    features_title={fleetManagmentData.features_title}
+    features_list={fleetManagmentData.features_list}
+    security_title={fleetManagmentData.security_title}
+    security_description={fleetManagmentData.security_description}
+    security_features={fleetManagmentData.security_features}
+    security_path={fleetManagmentData.security_path}
+    benefits_title={fleetManagmentData.benefits_title}
+    benefits_list={fleetManagmentData.benefits_list}
+  />
+</Layout>

@@ -1,0 +1,425 @@
+---
+// src/components/QuestionSection.astro
+export interface Props {
+  title?: string;
+  questions?: {
+    question: string;
+    answer: string;
+  }[];
+}
+
+const { title, questions = [] } = Astro.props;
+---
+
+<div class="menu-container">
+  {title && <h2 class="menu-title">{title}</h2>}
+
+  <div class="dropdown-section">
+    <div class="dropdown-container">
+      <button class="dropdown-button" id="dropdown-button">
+        <span id="dropdown-text">Select a question...</span>
+        <svg
+          class="dropdown-arrow"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <polyline points="6,9 12,15 18,9"></polyline>
+        </svg>
+      </button>
+
+      <div class="dropdown-menu" id="dropdown-menu">
+        {
+          questions.map((item, index) => (
+            <div
+              class="dropdown-item"
+              data-index={index}
+              data-question={item.question}
+              data-answer={item.answer}
+            >
+              <span class="item-number">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span class="item-text">{item.question}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <div id="selected-display" class="selected-display">
+    {
+      questions.length > 0 && (
+        <div class="menu-item featured">
+          <div class="menu-item-header">
+            <span class="menu-item-number" id="display-number">
+              01
+            </span>
+            <h3 class="menu-item-title" id="display-question">
+              {questions[0].question}
+            </h3>
+            <span class="menu-item-price">•••</span>
+          </div>
+          <p class="menu-item-description" id="display-answer">
+            {questions[0].answer}
+          </p>
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownButton = document.getElementById(
+      "dropdown-button"
+    ) as HTMLButtonElement | null;
+    const dropdownText = document.getElementById(
+      "dropdown-text"
+    ) as HTMLElement | null;
+    const dropdownArrow = document.querySelector(
+      ".dropdown-arrow"
+    ) as HTMLElement | null;
+    const dropdownMenu = document.getElementById(
+      "dropdown-menu"
+    ) as HTMLElement | null;
+    const dropdownItems =
+      document.querySelectorAll<HTMLElement>(".dropdown-item");
+
+    // Elements in the display
+    const displayNumber = document.getElementById("display-number");
+    const displayQuestion = document.getElementById("display-question");
+    const displayAnswer = document.getElementById("display-answer");
+
+    if (
+      !dropdownButton ||
+      !dropdownMenu ||
+      !dropdownText ||
+      !dropdownArrow ||
+      !displayNumber ||
+      !displayQuestion ||
+      !displayAnswer
+    ) {
+      console.warn("Some dropdown or display elements are missing");
+      return;
+    }
+
+    if (dropdownItems.length === 0) {
+      console.warn("No dropdown items found");
+      return;
+    }
+
+    let isOpen = false;
+
+    // Initialize first item
+    const firstItem = dropdownItems[0];
+    if (firstItem) {
+      firstItem.classList.add("selected");
+      dropdownText.textContent = firstItem.dataset.question || "";
+      displayNumber.textContent = "01";
+      displayQuestion.textContent = firstItem.dataset.question || "";
+      displayAnswer.textContent = firstItem.dataset.answer || "";
+    }
+
+    // Toggle dropdown
+    dropdownButton.addEventListener("click", function (e) {
+      e.stopPropagation();
+      isOpen = !isOpen;
+
+      if (isOpen) {
+        dropdownMenu.style.display = "block";
+        dropdownArrow.style.transform = "rotate(180deg)";
+        dropdownButton.classList.add("active");
+      } else {
+        dropdownMenu.style.display = "none";
+        dropdownArrow.style.transform = "rotate(0deg)";
+        dropdownButton.classList.remove("active");
+      }
+    });
+
+    // Handle dropdown item selection
+    dropdownItems.forEach(function (item) {
+      item.addEventListener("click", function () {
+        const question = this.dataset.question;
+        const answer = this.dataset.answer;
+        const indexStr = this.dataset.index;
+
+        if (!question || !answer || !indexStr) return;
+
+        const index = parseInt(indexStr) + 1;
+
+        // Update dropdown button text
+        dropdownText.textContent = question;
+
+        // Update display text only (keep colors/borders)
+        displayNumber.textContent = index.toString().padStart(2, "0");
+        displayQuestion.textContent = question;
+        displayAnswer.textContent = answer;
+
+        // Close dropdown
+        dropdownMenu.style.display = "none";
+        dropdownArrow.style.transform = "rotate(0deg)";
+        dropdownButton.classList.remove("active");
+        isOpen = false;
+
+        // Highlight selected dropdown item
+        dropdownItems.forEach((i) => i.classList.remove("selected"));
+        this.classList.add("selected");
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function () {
+      if (isOpen) {
+        dropdownMenu.style.display = "none";
+        dropdownArrow.style.transform = "rotate(0deg)";
+        dropdownButton.classList.remove("active");
+        isOpen = false;
+      }
+    });
+  });
+</script>
+
+<style>
+  .menu-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: "Georgia", serif;
+    background: #fefefe;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding-top: 1rem;
+  }
+
+  .menu-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 1rem;
+    margin-top: 0;
+  }
+
+  .dropdown-section {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .dropdown-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .dropdown-button {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: #fff;
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown-button:hover,
+  .dropdown-button.active {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+  }
+
+  .dropdown-arrow {
+    transition: transform 0.3s ease;
+    color: #d4af37;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 2px solid #d4af37;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .dropdown-item {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-item:hover {
+    background: #f8f9fa;
+    transform: translateX(5px);
+  }
+
+  .dropdown-item.selected {
+    background: rgba(44, 62, 80, 0.1);
+    color: #2c3e50;
+    font-weight: 500;
+    border-left: 4px solid #2c3e50;
+  }
+
+  .item-number {
+    font-weight: bold;
+    color: #d4af37;
+    min-width: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .item-text {
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .selected-display {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .menu-item {
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .featured {
+    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+    border: 2px solid #2c3e50;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(44, 62, 80, 0.15);
+    transform: scale(1.02);
+    border-bottom: 2px solid #2c3e50 !important;
+  }
+
+  .menu-item-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .menu-item-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #d4af37;
+    min-width: 2rem;
+  }
+
+  .featured .menu-item-number {
+    background: #2c3e50;
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 50%;
+    font-size: 1rem;
+  }
+
+  .menu-item-title {
+    flex: 1;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .featured .menu-item-title {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .menu-item-price {
+    font-size: 1.2rem;
+    color: #d4af37;
+    font-weight: bold;
+  }
+
+  .menu-item-description {
+    margin: 0;
+    padding-left: 3rem;
+    color: #666;
+    line-height: 1.6;
+    font-size: 1rem;
+    font-style: italic;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .menu-container {
+      padding: 1rem;
+    }
+
+    .menu-title {
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+
+    .dropdown-button {
+      font-size: 1rem;
+      padding: 0.8rem 1rem;
+    }
+
+    .dropdown-item {
+      padding: 0.8rem 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .menu-item-header {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    .menu-item-description {
+      padding-left: 0;
+      margin-top: 0.5rem;
+    }
+
+    .menu-item-price {
+      align-self: flex-end;
+    }
+  }
+</style>

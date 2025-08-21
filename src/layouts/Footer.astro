@@ -1,0 +1,220 @@
+---
+// src/components/Footer.astro
+
+interface SocialLink {
+  href: string;
+  label: string;
+  svgPath: string;
+}
+
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+interface FooterSection {
+  title: string;
+  titleHref?: string;
+  description?: string;
+  links?: NavLink[];
+  contactEmail?: string; // changed to string
+  phone?: string; // changed to string
+  addresses?: { href: string; text: string }[];
+  socialLinks?: SocialLink[];
+}
+
+interface Props {
+  brandName: string;
+  brandHref: string;
+  brandDescription: string;
+  serviceSection: FooterSection;
+  contactSection: FooterSection;
+  copyrightText: string;
+}
+
+const {
+  brandName,
+  brandHref,
+  brandDescription,
+  serviceSection,
+  contactSection,
+  copyrightText,
+} = Astro.props;
+---
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3><a href={brandHref}>{brandName}</a></h3>
+        <p>{brandDescription}</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>
+          <a href={serviceSection.titleHref ?? "#"}>
+            {serviceSection.title}
+          </a>
+        </h4>
+        {
+          serviceSection.links && (
+            <ul>
+              {serviceSection.links.map((link) => (
+                <li>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      <div class="footer-section">
+        <h4>
+          <a href={contactSection.titleHref ?? "#"}>
+            {contactSection.title}
+          </a>
+        </h4>
+
+        {
+          contactSection.contactEmail && (
+            <p>
+              <a href={`mailto:${contactSection.contactEmail}`}>
+                {contactSection.contactEmail}
+              </a>
+            </p>
+          )
+        }
+
+        {contactSection.phone && <p>{contactSection.phone}</p>}
+
+        {
+          contactSection.addresses &&
+            contactSection.addresses.map((addr) => (
+              <p>
+                <a
+                  href={addr.href}
+                  style="color: white; text-decoration: none;"
+                >
+                  {addr.text}
+                </a>
+              </p>
+            ))
+        }
+
+        {
+          contactSection.socialLinks && (
+            <div class="footer-section social-media">
+              <div class="social-icons">
+                {contactSection.socialLinks.map((social) => (
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    aria-label={social.label}
+                    rel="noopener noreferrer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      width="24"
+                      height="24"
+                    >
+                      <path d={social.svgPath} />
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>{copyrightText}</p>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  .footer {
+    background: #1f2937;
+    color: white;
+    padding: 2rem 0 1rem;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-section h3 a,
+  .footer-section h4 a {
+    margin-bottom: 1rem;
+    color: #60a5fa;
+    text-decoration: none;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-section p {
+    margin-top: 0; /* added */
+    margin-bottom: 0.5rem; /* keep some spacing below each paragraph */
+  }
+
+  .footer-section p a {
+    color: white;
+    text-decoration: none;
+  }
+
+  li a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 1rem;
+    text-align: center;
+    color: #9ca3af;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .social-icons a {
+    color: white;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .social-icons a:hover {
+    color: #2563eb;
+  }
+
+  .social-icons svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+  }
+</style>

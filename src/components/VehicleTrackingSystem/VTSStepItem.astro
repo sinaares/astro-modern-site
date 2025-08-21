@@ -1,0 +1,316 @@
+---
+// StepItem.astro
+export interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  viewBox: string;
+  showAppButton?: boolean;
+  link: string;   // Android link
+  iosLink?: string; // iOS link
+  path: string;
+  path_ios?: string; // iOS path, if different
+  download_text_1?: string; // For Android
+  download_text_2?: string; // For iOS
+  download_text_3?: string; // For Android
+  download_text_4?: string; // For iOS
+}
+
+// Global counter for StepItems
+let stepCounter = 0; // module-level, persists across instances
+
+const {
+  title,
+  description,
+  icon,
+  viewBox,
+  showAppButton = false,
+  link,
+  iosLink,
+  path,
+  path_ios,
+  download_text_1,
+  download_text_2,
+  download_text_3,
+  download_text_4,
+} = Astro.props;
+
+// Sequential number and type
+const number = (stepCounter % 4) + 1; // cycles 1 → 4
+const type = stepCounter % 2 === 0 ? "step-up" : "step-down";
+
+// Increment for next component
+stepCounter++;
+---
+
+<div class={`step-item ${type}`}>
+  <div class="step-content">
+    <div class={`step-number step-${number}`}>
+      <svg
+        class="step-icon"
+        viewBox={viewBox}
+        fill="currentColor"
+        set:html={icon}
+      />
+    </div>
+    <div class="step-text">
+      <h3>{title}</h3>
+      <p>{description}</p>
+      {
+        showAppButton && (
+          <div class="app-download-container">
+            <!-- Android Button -->
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="app-download-btn android-btn"
+            >
+              <div class="btn-content">
+                <svg
+                  class="store-icon"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d={path} />
+                </svg>
+                <div class="btn-text">
+                  <span class="btn-label">{download_text_1}</span>
+                  <span class="btn-platform">{download_text_2}</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- iOS Button -->
+            {iosLink && (
+              <a
+                href={iosLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="app-download-btn ios-btn"
+              >
+                <div class="btn-content">
+                  <svg
+                    class="store-icon"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d={path_ios} />
+                  </svg>
+                  <div class="btn-text">
+                    <span class="btn-label">{download_text_3}</span>
+                    <span class="btn-platform">{download_text_4}</span>
+                  </div>
+                </div>
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .step-item {
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .step-up,
+  .step-down {
+    transform: none;
+  }
+
+  .step-item:hover {
+    transform: translateX(8px) translateY(30px);
+  }
+
+  .step-item.step-down:hover {
+    transform: translateX(8px) translateY(30px);
+  }
+
+  .step-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .step-number {
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .step-icon {
+    width: 32px;
+    height: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  .step-2 {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  }
+  .step-3 {
+    background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+  }
+  .step-4 {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  }
+
+  .step-item:hover .step-number {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+  }
+
+  .step-text {
+    flex: 1;
+  }
+
+  .step-text h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-text p {
+    color: #4a5568;
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+  }
+
+  .app-download-container {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .app-download-btn {
+    display: inline-flex;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    min-width: 160px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .app-download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .store-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .btn-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .btn-label {
+    font-size: 0.7rem;
+    opacity: 0.9;
+  }
+
+  .btn-platform {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  /* Android Button */
+  .android-btn {
+    background: linear-gradient(135deg, #1a73e8 0%, #34a853 100%);
+    color: white;
+  }
+
+  .android-btn:hover {
+    background: linear-gradient(135deg, #1665d1 0%, #2d9347 100%);
+  }
+
+  /* iOS Button */
+  .ios-btn {
+    background: linear-gradient(135deg, #000000 0%, #434343 100%);
+    color: white;
+  }
+
+  .ios-btn:hover {
+    background: linear-gradient(135deg, #1a1a1a 0%, #383838 100%);
+  }
+
+  @media (max-width: 768px) {
+    .step-up,
+    .step-down {
+      transform: translateY(0);
+    }
+
+    .step-item:hover {
+      transform: translateX(8px);
+    }
+    
+    .app-download-container {
+      flex-direction: column;
+    }
+    
+    .app-download-btn {
+      min-width: 140px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .step-number {
+      width: 60px;
+      height: 60px;
+    }
+
+    .step-icon {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .btn-content {
+      gap: 0.5rem;
+    }
+    
+    .store-icon {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .btn-label {
+      font-size: 0.6rem;
+    }
+    
+    .btn-platform {
+      font-size: 0.85rem;
+    }
+  }
+</style>

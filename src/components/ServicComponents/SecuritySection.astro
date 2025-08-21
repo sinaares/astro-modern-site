@@ -1,0 +1,143 @@
+---
+// components/SecuritySection.astro
+
+export interface SecurityFeature {
+  icon: string;
+  label: string;
+}
+
+export interface Props {
+  title?: string;
+  description?: string;
+  features?: SecurityFeature[];
+  path?: string;
+}
+
+const { title, description, features = [], path } = Astro.props;
+---
+
+<div class="security-section">
+  <div class="security-content">
+    <div class="security-text">
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <div class="security-features">
+        {
+          features.map(({ icon, label }) => (
+            <div class="security-item">
+              <span class="security-icon">{icon}</span>
+              <span>{label}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="security-visual">
+      <div class="security-badge" role="img" aria-label="Security Badge">
+        <svg
+          width="80"
+          height="80"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d={path}></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .security-section {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 24px;
+    padding: 50px;
+    padding-top: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .security-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+
+  .security-text h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 20px;
+  }
+
+  .security-text p {
+    font-size: 1.1rem;
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+
+  .security-features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .security-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: #3b82f6;
+    font-weight: 600;
+  }
+
+  .security-icon {
+    font-size: 1.5rem;
+  }
+
+  .security-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .security-badge {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #3b82f6, #10b981);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    animation: pulse 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .security-content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      text-align: center;
+    }
+
+    .security-features {
+      align-items: center;
+    }
+  }
+</style>

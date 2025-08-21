@@ -1,0 +1,134 @@
+---
+// src/pages/index.astro (or any other page where you want to use the services section)
+import Layout from "../../layouts/Layout.astro";
+import Services from "../../components/Services.astro";
+
+const servicesData = [
+  {
+    href: "/VehicleTrackingSystem",
+    icon: `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13l1.5-4.5A2 2 0 016.4 7h11.2a2 2 0 011.9 1.5L21 13v5a1 1 0 01-1 1h-1a2 2 0 01-4 0H9a2 2 0 01-4 0H4a1 1 0 01-1-1v-5z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M7 16h.01M17 16h.01"></path>
+      </svg>
+    `,
+    title: "Araç Takip Sistemi",
+    description:
+      "Filonuzdaki her aracı canlı olarak harita üzerinden izleyebilirsiniz. Konum, hız, yön ve geçmiş sürüş verileri anlık olarak sunulur.",
+    features: [
+      "Gerçek zamanlı konum takibi",
+      "Hız ve rota kontrolü",
+      "Güvenli bölge tanımlama",
+      "Anlık uyarı sistemi",
+    ],
+  },
+  {
+    href: "/PersonelSystem",
+    icon: `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 715.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+      </svg>
+    `,
+    title: "Personel ve İK Yönetimi",
+    description:
+      "Çalışanların işe alım, bordro, performans ve eğitim süreçlerini tek bir dijital platform üzerinden etkin bir şekilde yönetin.",
+    features: [
+      "Kapsamlı personel bilgi ve özlük dosyaları",
+      "Otomatik bordro ve maaş hesaplamaları",
+      "360° performans değerlendirme",
+      "Dijital işe alım süreçleri",
+    ],
+  },
+  {
+    href: "/FleetManagement",
+    icon: `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+      </svg>
+    `,
+    title: "Filo Yönetim Sistemi",
+    description:
+      "Tüm araçların yaşam döngüsünü uçtan uca takip edin. Bakım planlaması, muayene tarihleri ve sözleşme yönetimi tek merkezde.",
+    features: [
+      "Bakım ve servis takibi",
+      "Sigorta ve muayene hatırlatıcıları",
+      "Maliyet analizi",
+      "Kapsamlı raporlama",
+    ],
+  },
+  {
+    href: "/PDKS",
+    icon: `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+      </svg>
+    `,
+    title: "PDKS ve Erişim Sistemleri",
+    description:
+      "Çalışanların iş yerindeki giriş-çıkışlarını biyometrik cihazlarla izleyin. Güvenlik ve doğruluğu artırın.",
+    features: [
+      "Biyometrik giriş-çıkış kontrolü",
+      "Otomatik mesai hesaplama",
+      "Güvenli erişim yönetimi",
+      "Detaylı personel raporları",
+    ],
+  },
+  {
+    href: "/SDS",
+    icon: `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+      </svg>
+    `,
+    title: "Sürüş Performans Takip",
+    description:
+      "Hız, konum ve G-sensör verileri ile sürücü davranışlarını analiz ederek güvenli ve verimli sürüşü teşvik edin.",
+    features: [
+      "Gerçek zamanlı veri analizi",
+      "Hız, frenleme ve dönüş değerlendirmesi",
+      "Sürücü bazlı performans puanlama",
+      "Özelleştirilebilir raporlar",
+    ],
+  },
+  {
+    href: "/FuelManagement",
+    icon: `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 10h9m0 0V6.5a1.5 1.5 0 00-3 0V10m3 0h3.5a2 2 0 012 2v.25a1 1 0 001 1h.5a.5.5 0 000-1l-1.5-1.5M6 14v1a2 2 0 002 2h4a2 2 0 002-2v-1H6z"></path>
+      </svg>
+    `,
+    title: "Yakıt Yönetimi Sistemi",
+    description:
+      "Yakıt tüketimini detaylı şekilde izleyerek gereksiz harcamaları önleyin. Araç bazlı tüketim analizleriyle maliyet kontrolü sağlayın.",
+    features: [
+      "Gerçek zamanlı yakıt tüketim takibi",
+      "Yakıt dolum ve harcama kayıtları",
+      "Araç bazlı yakıt verimliliği analizi",
+      "Maliyet optimizasyonu",
+    ],
+  },
+  {
+    href: "/Kokpit",
+    icon: `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      </svg>
+    `,
+    title: "Kokpit",
+    description:
+      "Tüm sistemlerinizi tek bir panelden yönetin. Özelleştirilebilir dashboard ile işletmenizin performansını anlık olarak izleyin.",
+    features: [
+      "Tüm sistemlerin tek panelden yönetimi",
+      "Özelleştirilebilir raporlar ve grafikler",
+      "Anlık bildirim ve uyarı sistemi",
+      "Detaylı analiz ve karar destek araçları",
+    ],
+  },
+];
+---
+
+<Layout title="Ana Sayfa">
+  <main>
+    <Services services={servicesData} />
+  </main>
+</Layout>

@@ -1,0 +1,137 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Features from "../../components/Features.astro";
+---
+
+<Layout title="TNB Mobil | Avantajlar">
+  <Features
+    title_header="Neden TNB Mobil?"
+    description_header="Modern teknoloji ile güçlendirilmiş çözümlerimizin avantajları"
+    features={[
+      {
+        icon: "📱",
+        title: "Mobil Uygulamalar",
+        description:
+          "Android ve iOS uygulamaları sayesinde saha ekipleri ve yöneticiler, sistemlere uzaktan erişerek süreçleri gerçek zamanlı yönetebilir.",
+        link: "#mobile-apps-details",
+      },
+      {
+        icon: "📈",
+        title: "Gelişmiş Raporlama",
+        description:
+          "Tüm sistemlerden elde edilen verileri anlamlı grafik ve tablolar haline getirerek yöneticilere sunar.",
+        link: "#reporting-details",
+      },
+      {
+        icon: "🔬",
+        title: "AR-GE Altyapısı",
+        description:
+          "Proje kapsamında yapılan AR-GE çalışmalarıyla, farklı yol ve sürüş koşullarında testler gerçekleştirilmiştir.Detayları görüntüle",
+        link: "#rnd-details",
+      },
+      {
+        icon: "🛡️",
+        title: "Güvenlik Odaklı",
+        description:
+          "Biyometrik sistemler, güvenli veri transferi ve erişim kontrolü ile işletmenizin güvenliğini en üst düzeyde tutuyoruz.",
+        link: "#security-details",
+      },
+      {
+        icon: "⚡",
+        title: "Gerçek Zamanlı İzleme",
+        description:
+          "Canlı izleme sistemleri ile operasyonlarınızı anlık olarak takip edebilir, hızlı kararlar alabilirsiniz.",
+        link: "#monitoring-details",
+      },
+      {
+        icon: "🧠",
+        title: "İş Zekası",
+        description:
+          "Veriye dayalı karar destek sistemleri ile işletmenizin iş zekasını artırın, stratejik planlamalar yapın.",
+        link: "#bi-details",
+      },
+    ]}
+    features_text_icon="M5 12h14M12 5l7 7-7 7"
+    features_text="Detayları görüntüle"
+    details={[
+      {
+        id: "mobile-apps-details",
+        icon: "📱",
+        title: "Mobil Uygulamalar",
+        content: [
+          "TNB Mobil uygulamaları ile iş süreçlerinizi her yerden yönetin. Özel geliştirilmiş arayüzlerle kolay kullanım sağlarken, güçlü altyapımızla kesintisiz çalışma garantisi sunuyoruz.",
+          "Sistemimiz hem Android hem de iOS platformları için geliştirilmiş native uygulamalar sunmaktadır. Bu uygulamalar internet bağlantısı olmadığında bile çevrimdışı çalışma özelliği ile veri girişlerinizi kaybetmeden devam edebilmenizi sağlar.",
+          "Ayrıca entegre edilmiş barkod ve QR kod okuma sistemleri sayesinde envanter yönetiminden stok takibine kadar birçok işleminizi hızla gerçekleştirebilirsiniz.",
+          "Anlık bildirim sistemi ile önemli gelişmelerden anında haberdar olur, kritik süreçlerde gecikme yaşamadan müdahale edebilirsiniz.",
+        ],
+        link: "#mobile-apps-details",
+      },
+      {
+        id: "reporting-details",
+        icon: "📈",
+        title: "Gelişmiş Raporlama",
+        content: [
+          "Özelleştirilebilir dashboardlar ile işletmenizin performansını tek bakışta görebilirsiniz. 50'den fazla rapor şablonu ve kendi raporlarınızı oluşturma imkanı ile veriye dayalı kararlar alın.",
+          "Raporlama sistemimiz gerçek zamanlı veri görselleştirme teknolojisi ile çalışır ve anlık performans metriklerini interaktif grafikler halinde sunar.",
+          "İhtiyacınıza göre PDF veya Excel formatında detaylı raporlar oluşturabilir, bu raporları otomatik olarak belirli aralıklarla planlanmış şekilde e-posta adreslerinize gönderebilirsiniz.",
+          "Gelişmiş veri filtreleme ve segmentasyon özellikleri sayesinde büyük veri setlerinden istediğiniz kriterlere göre anlamlı bilgiler çıkarabilir, karmaşık analizleri basit görsellerle anlayabilirsiniz.",
+        ],
+        link: "#reporting-details",
+      },
+      {
+        id: "rnd-details",
+        icon: "🔬",
+        title: "AR-GE Altyapısı",
+        content: [
+          "150.000 km'den fazla yol testi ve 2 yıllık AR-GE çalışması sonucunda geliştirilen sistemimiz, sektörün en güvenilir çözümlerini sunar.",
+          "Sürekli iyileştirme politikamızla her gün daha iyiye ulaşıyoruz.",
+          "Ar-Ge altyapımız yapay zeka destekli analizler sayesinde büyük veri setlerini işleyerek öngörülü bakım ve optimizasyon önerileri sunar.",
+          "Gerçek dünya simülasyonları ile farklı senaryolarda sistemin davranışları test edilir ve sürekli güncellenen algoritmalar ile performans artışı sağlanır.",
+          "Kullanıcı geri bildirimleri doğrultusunda sistemin kullanılabilirliği ve etkinliği sürekli iyileştirilir.",
+          "Bu yaklaşım sayesinde teorik çözümlerden ziyade gerçek ihtiyaçlara yönelik pratik ve etkili sistemler geliştiriyoruz.",
+        ],
+        link: "#rnd-details",
+      },
+      {
+        id: "security-details",
+        icon: "🛡️",
+        title: "Güvenlik Odaklı",
+        content: [
+          "256-bit şifreleme, çok faktörlü kimlik doğrulama ve ISO 27001 sertifikalı veri merkezleri ile verileriniz güvende.",
+          "Düzenli penetrasyon testleri ve 7/24 güvenlik izleme merkezi ile koruma sağlıyoruz.",
+          "Güvenlik sistemimiz biyometrik kimlik doğrulama teknolojisi ile yetkisiz erişimleri engeller ve her türlü veri şifreleme ve anonimleştirme işlemlerini otomatik olarak gerçekleştirir.",
+          "Rol bazlı erişim kontrolü sayesinde her kullanıcının sadece yetkili olduğu alanlara erişim sağlaması güvence altına alınır.",
+          "Ayrıca GDPR uyumluluğu kapsamında kişisel verilerin korunması ve işlenmesi süreçleri uluslararası standartlara uygun olarak yürütülür.",
+          "Bu kapsamlı güvenlik altyapısı sayesinde işletmenizin en hassas bilgileri bile güvende tutulur.",
+        ],
+        link: "#security-details",
+      },
+      {
+        id: "monitoring-details",
+        icon: "⚡",
+        title: "Gerçek Zamanlı İzleme",
+        content: [
+          "Saniyelik güncelleme aralıklarıyla canlı veri akışı sağlayan sistemimiz, harita üzerinde gerçek zamanlı takip imkanı sunar.",
+          "Anomali tespiti ve otomatik uyarı sistemleri ile proaktif yönetim sağlayın.",
+          "İzleme sistemimiz canlı konum takibi ile araçlarınızın ve ekiplerinizin konumlarını harita üzerinde gerçek zamanlı olarak görüntülemenizi sağlar.",
+          "Anlık performans metrikleri sayesinde sistemin tüm bileşenlerinin çalışma durumunu sürekli kontrol edebilir, herhangi bir aksaklık öncesinde uyarı alabilirsiniz.",
+          "Özel uyarı kuralları tanımlayarak kritik eşik değerlere ulaşıldığında otomatik bildirimler alabilir, geçmişe dönük izleme özellikleri ile geçmiş verileri analiz ederek gelecekteki olayları öngörebilirsiniz.",
+        ],
+        link: "#monitoring-details",
+      },
+      {
+        id: "bi-details",
+        icon: "🧠",
+        title: "İş Zekası",
+        content: [
+          "Makine öğrenmesi algoritmaları ile geçmiş verilerinizden öngörüler elde edin.",
+          "Tahmine dayalı analizlerle stok, lojistik ve personel yönetiminizi optimize ederek maliyetlerinizi düşürün.",
+          "İş zekası modülümüz öngörücü analitik teknolojileri sayesinde geçmiş verilerden hareketle gelecekteki trendleri ve olasılıkları hesaplayarak stratejik karar verme süreçlerinizi destekler.",
+          "İşletmenize özel KPI'lar ve metrikler tanımlayarak performansınızı sürekli ölçebilir ve benchmark değerlerle karşılaştırabilirsiniz.",
+          "Veri madenciliği araçları ile büyük veri setlerinden değerli içgörüler çıkarır, entegre iş kuralları motoru sayesinde karmaşık süreçleri otomatikleştirerek operasyonel verimliliği artırırsınız.",
+        ],
+        link: "#bi-details",
+      },
+    ]}
+  />
+</Layout>

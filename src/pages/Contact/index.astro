@@ -1,0 +1,46 @@
+---
+import Layout, { phone, email } from "../../layouts/Layout.astro";
+import Contact from "../../components/contact.astro";
+
+const contactItems = [
+  { type: "email", value: email, icon: "✉️" },
+  { type: "phone", value: phone, icon: "📱" },
+  { type: "location", value: "İzmir, Türkiye", icon: "📍" },
+];
+---
+
+<Layout title="İletişim | TNB Mobil Çözümler">
+  <Contact
+    titleHeader="Bizimle İletişime Geçin"
+    lead="Size en kısa sürede dönüş yapabilmemiz için iletişim formunu doldurun veya aşağıdaki bilgilerden bize ulaşın."
+    email="sosyalmedya@tnbmobil.com"
+    titleInfo="İletişim Bilgilerimiz"
+    phone="+90 850 360 0681"
+    location="İzmir, Türkiye"
+    mapLocation="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3124.4734487352935!2d27.174140325915566!3d38.45362972182216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b962a90bd90ea1%3A0x81dea1b5a505a1a0!2sAdalet%2C%20Manas%20Blv.%20Yanyolu%20No%3A47%2C%2035530%20Bayrakl%C4%B1%2F%C4%B0zmir!5e0!3m2!1sen!2str!4v1754472324003!5m2!1sen!2str"
+    titleForm="Sık Sorulan Sorular"
+    questionSection={[
+      {
+        question: "Hizmetleriniz hakkında nasıl bilgi alabilirim?",
+        answer:
+          "Web sitemizi ziyaret edebilir veya doğrudan bizimle iletişime geçebilirsiniz. Size en uygun çözümü sunmak için detaylı bilgi verebiliriz.",
+      },
+      {
+        question: "Fiyatlandırma nasıl çalışıyor?",
+        answer:
+          "Fiyatlarımız proje kapsamına göre belirlenir. Ücretsiz bir değerlendirme için bizimle iletişime geçin.",
+      },
+      {
+        question: "Destek hizmeti sağlıyor musunuz?",
+        answer:
+          "Evet, 7/24 teknik destek hizmeti sunuyoruz. Herhangi bir sorunuz olduğunda bizimle iletişime geçebilirsiniz.",
+      },
+      {
+        question: "Projeler ne kadar sürede tamamlanır?",
+        answer:
+          "Proje süresi, karmaşıklığa ve kapsamına bağlı olarak değişir. Genellikle 2-8 hafta arasında tamamlanır.",
+      },
+    ]}
+    contactItems={contactItems}
+  />
+</Layout>

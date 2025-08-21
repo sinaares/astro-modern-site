@@ -1,0 +1,102 @@
+---
+const { title, path, description } = Astro.props;
+---
+
+<div class="overview-card">
+  <div class="card-header">
+    <div class="icon-wrapper">
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d={path}></path>
+      </svg>
+    </div>
+    <h2 class="card-title">{title}</h2>
+  </div>
+  <div class="card-content">
+    <p class="card-text">
+      {description}
+    </p>
+  </div>
+</div>
+
+<style>
+  .overview-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 24px;
+    padding: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .overview-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #10b981);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #3b82f6, #10b981);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 25px;
+    color: white;
+  }
+
+  .card-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin: 0;
+  }
+
+  .card-content {
+    color: #4b5563;
+    line-height: 1.7;
+  }
+
+  .card-text {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .overview-card {
+      padding: 35px 25px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card-header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .icon-wrapper {
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+  }
+</style>

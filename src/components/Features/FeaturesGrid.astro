@@ -1,0 +1,50 @@
+---
+import FeatureItem from "./FeatureItem.astro";
+
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+  link: string;
+}
+
+interface Props {
+  features: Feature[];
+  text_icon: string;
+  text: string;
+}
+
+const { features, text_icon, text } = Astro.props as Props;
+---
+
+<div class="features-grid">
+  {
+    features.map((feature: Feature, index: number) => (
+      <FeatureItem
+        icon={feature.icon}
+        title={feature.title}
+        description={feature.description}
+        link={feature.link}
+        delay={(index + 1) * 100}
+        text={text}
+        text_icon={text_icon}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+// src/components/Services/SectionHeader.astro
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<div class="section-header">
+  <h2>{title}</h2>
+  <p>{description}</p>
+</div>
+
+<style>
+  /* ========== Section Header ========== */
+  .section-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    margin-top: -4rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 1.25rem;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.5px;
+  }
+
+  .section-header h2::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6 0%, #10b981 100%);
+    border-radius: 4px;
+  }
+
+  .section-header p {
+    font-size: 1.25rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ========== Responsive Adjustments ========== */
+  @media (max-width: 768px) {
+    .section-header h2 {
+      font-size: 2.25rem;
+    }
+
+    .section-header p {
+      font-size: 1.15rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .section-header h2 {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-header h2::after {
+      width: 80px;
+      bottom: -10px;
+    }
+  }
+</style>

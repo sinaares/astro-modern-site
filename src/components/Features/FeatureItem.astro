@@ -1,0 +1,190 @@
+---
+const {
+  icon,
+  title,
+  description,
+  link,
+  delay = 100,
+  text,
+  text_icon,
+} = Astro.props;
+---
+
+<div class="feature-item" data-aos="fade-up" data-delay={delay}>
+  <div class="feature-icon-wrapper">
+    <div class="feature-icon">{icon}</div>
+    <div class="icon-glow"></div>
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <a href={link} class="feature-link">
+    <span>{text}</span>
+    <svg
+      class="link-arrow"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path d={text_icon}></path>
+    </svg>
+  </a>
+</div>
+
+<style>
+  .feature-item {
+    padding: 3rem 2.5rem;
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 10px 30px rgba(59, 130, 246, 0.1),
+      0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .feature-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(59, 130, 246, 0.1),
+      transparent
+    );
+    transition: left 0.8s ease;
+  }
+
+  .feature-item:hover::before {
+    left: 100%;
+  }
+
+  .feature-item:hover {
+    transform: translateY(-15px) scale(1.03);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow:
+      0 25px 50px rgba(59, 130, 246, 0.2),
+      0 10px 20px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  .feature-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+
+  .feature-icon {
+    font-size: 4.5rem;
+    position: relative;
+    z-index: 2;
+    display: block;
+    animation: iconFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.2));
+  }
+
+  .icon-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.15),
+      rgba(14, 165, 233, 0.1),
+      transparent 70%
+    );
+    border-radius: 50%;
+    z-index: 1;
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  .feature-item h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .feature-item p {
+    font-size: 1.1rem;
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .feature-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    background: rgba(59, 130, 246, 0.02);
+  }
+
+  .feature-link:hover {
+    color: #ffffff;
+    border-color: #3b82f6;
+    background: #3b82f6;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(59, 130, 246, 0.4);
+  }
+
+  @keyframes iconFloat {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-8px) rotate(2deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-10px) rotate(-2deg);
+    }
+  }
+
+  @keyframes glow {
+    from {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .feature-item {
+      padding: 2rem 1.5rem;
+    }
+    .feature-icon {
+      font-size: 3.5rem;
+    }
+  }
+</style>

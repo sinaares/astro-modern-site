@@ -1,0 +1,27 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.counters-section {
+  display: flex;
+  justify-content: space-around;
+  background: #ffffff;
+  padding: 2rem;
+}
+
+.counter-title {
+  font-size: 3rem; /* larger for strong section headline */
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(
+    45deg,
+    #60a5fa,
+    #34d399
+  ); /* blue-green gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  font-family: "Segoe UI", sans-serif;
+}
+

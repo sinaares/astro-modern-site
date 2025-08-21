@@ -1,0 +1,95 @@
+---
+// Type definitions
+interface ContactItem {
+  type: string;
+  value: string;
+  icon: string;
+}
+
+// Props: fully customizable contact items
+const { titleInfo = "İletişim Bilgileri", contactItems = [] } = Astro.props;
+---
+
+<div class="contact-info-card">
+  <h3>{titleInfo}</h3>
+  <ul class="contact-info">
+    {
+      contactItems.map((item: ContactItem) => (
+        <li>
+          {item.type === "email" ? (
+            <a href={`mailto:${item.value}`}>
+              <span class="icon">{item.icon}</span>
+              <span>{item.value}</span>
+            </a>
+          ) : item.type === "phone" ? (
+            <a href={`tel:${item.value}`}>
+              <span class="icon">{item.icon}</span>
+              <span>{item.value}</span>
+            </a>
+          ) : (
+            <>
+              <span class="icon">{item.icon}</span>
+              <span>{item.value}</span>
+            </>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  /* (Keep all your existing styles here) */
+  .contact-info-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    padding-top: 0.5rem;
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  .contact-info-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .contact-info li {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+    color: #374151;
+  }
+  .contact-info li a {
+    color: #374151;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.2s ease;
+  }
+  .contact-info li a:hover {
+    color: #3b82f6;
+  }
+  .icon {
+    font-size: 1.5rem;
+    width: 2rem;
+    display: inline-flex;
+    justify-content: center;
+  }
+  @media (max-width: 768px) {
+    .contact-info-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
