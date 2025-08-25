@@ -9,7 +9,7 @@ interface DetailItemProps {
 const { id, icon, title, content } = Astro.props as DetailItemProps;
 ---
 
-<div id={id} class="detail-item centered-column">
+<div id={id} class="detail-item">
   <div class="detail-header">
     <div class="detail-icon">{icon}</div>
     <h3>{title}</h3>

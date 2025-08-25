@@ -10,7 +10,7 @@ export interface Props {
 const { title, icon, content, quote } = Astro.props;
 ---
 
-<div class={`content-card -card`}>
+<div class={`content-card`}>
   <div class="card-header">
     <div class="icon-wrapper">
       <Fragment set:html={icon} />
