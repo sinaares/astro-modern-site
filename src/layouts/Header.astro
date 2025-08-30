@@ -67,12 +67,16 @@ const { logoSrc, logoAlt, brandName, navItems, externalLinks } = Astro.props;
       </ul>
     </div>
 
+    <!-- Simple, Clean Hamburger Menu -->
     <button class="nav-toggle" aria-label="Toggle navigation">
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
     </button>
   </div>
+
+  <!-- Overlay element -->
+  <div class="nav-overlay"></div>
 </nav>
 
 <style is:global>
@@ -142,23 +146,60 @@ const { logoSrc, logoAlt, brandName, navItems, externalLinks } = Astro.props;
     color: #2563eb;
   }
 
+  /* Simple, Clean Hamburger Menu */
   .nav-toggle {
     display: none;
     flex-direction: column;
-    background: none;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 8px;
+    border-radius: 8px;
     z-index: 1001;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .nav-toggle:hover {
+    background: rgba(37, 99, 235, 0.08);
+  }
+
+  .nav-toggle:active {
+    transform: scale(0.95);
   }
 
   .hamburger-line {
-    width: 22px;
-    height: 2px;
+    width: 24px;
+    height: 3px;
     background: #334155;
-    margin: 3px 0;
-    transition: 0.3s;
     border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: center;
+    margin: 2px 0;
+  }
+
+  /* Active state - Simple X animation */
+  .nav-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    background: #dc2626;
+  }
+
+  .nav-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .nav-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+    background: #dc2626;
+  }
+
+  .nav-toggle.active {
+    background: rgba(220, 38, 38, 0.1);
   }
 
   /* Dropdown styles */
@@ -258,7 +299,27 @@ const { logoSrc, logoAlt, brandName, navItems, externalLinks } = Astro.props;
     transform: translateY(-1px);
   }
 
-  /* Mobile styles */
+  /* Overlay when menu is open */
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Mobile and minimized desktop styles */
   @media (max-width: 1100px) {
     .nav-container {
       padding: 0 1rem;
@@ -271,123 +332,142 @@ const { logoSrc, logoAlt, brandName, navItems, externalLinks } = Astro.props;
     .nav-menu-container {
       position: fixed;
       top: 0;
-      left: -100%;
-      width: 85%;
-      max-width: 320px;
+      left: -100%; /* slide from left */
+      right: auto;
+      width: 280px;
       height: 100vh;
-      background: white;
-      transition: all 0.4s ease;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       z-index: 1000;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 8px 0 32px rgba(0, 0, 0, 0.12); /* shadow on right side */
       overflow-y: auto;
-      padding: 5rem 1.5rem 2rem;
+      padding: 80px 24px 24px;
+      border-right: 1px solid rgba(226, 232, 240, 0.8); /* border on right */
+      /* Fix for preventing overflow when closed */
+      visibility: hidden;
     }
 
     .nav-menu-container.active {
       left: 0;
+      visibility: visible;
     }
 
     .nav-menu {
       flex-direction: column;
-      align-items: flex-start;
-      gap: 0;
+      align-items: stretch;
+      gap: 8px;
       width: 100%;
     }
 
     .nav-menu > li {
       width: 100%;
-      border-bottom: 1px solid #f1f5f9;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: all 0.3s ease;
+      transition-delay: calc(var(--item-index, 0) * 50ms);
+    }
+
+    .nav-menu-container.active .nav-menu > li {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .nav-link {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 0;
-      width: 100%;
-      font-size: 1.1rem;
+      padding: 16px 20px;
+      width: 50%;
+      font-size: 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(226, 232, 240, 0.6);
+      transition: all 0.2s ease;
+      color: #334155;
+      text-decoration: none;
     }
 
-    /* Dropdown styles for mobile */
+    .nav-link:hover {
+      background: rgba(37, 99, 235, 0.05);
+      border-color: rgba(37, 99, 235, 0.2);
+      color: #2563eb;
+      transform: translateX(4px);
+    }
+
+    /* Simple dropdown for mobile */
     .dropdown-menu {
       position: static;
       display: none;
-      width: 100%;
+      width: 50%;
       border: none;
       box-shadow: none;
-      padding: 0 0 0 1rem;
-      margin: 0;
-      background: #f8fafc;
-      border-radius: 0.5rem;
-      margin: 0.5rem 0;
+      padding: 8px 0 0 0;
+      margin: 8px 0 0 16px;
+      background: transparent;
+      border-radius: 0;
     }
 
     .dropdown.active .dropdown-menu {
       display: flex;
+      flex-direction: column;
     }
 
     .dropdown-menu li a {
-      padding: 0.875rem 1rem;
-      border-bottom: 1px solid #e2e8f0;
+      padding: 12px 16px;
+      background: rgba(241, 245, 249, 0.8);
+      border: 1px solid rgba(226, 232, 240, 0.6);
+      border-radius: 8px;
+      margin-bottom: 4px;
+      font-size: 14px;
+      color: #64748b;
     }
 
-    .dropdown-menu li:last-child a {
-      border-bottom: none;
+    .dropdown-menu li a:hover {
+      background: rgba(37, 99, 235, 0.08);
+      color: #2563eb;
+      transform: translateX(4px);
     }
 
     /* External links on mobile */
     .external-links {
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 12px;
       width: 100%;
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #e2e8f0;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(226, 232, 240, 0.6);
     }
 
     .external-btn {
-      width: 100%;
-      text-align: center;
-      padding: 1rem;
-      font-size: 1rem;
+      width: 70%;
+      text-align: left;
+      padding: 14px 20px;
+      font-size: 15px;
+      border-radius: 12px;
+      transition: all 0.2s ease;
     }
 
-    /* Hamburger animation */
-    .nav-toggle.active .hamburger-line:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .nav-toggle.active .hamburger-line:nth-child(2) {
-      opacity: 0;
-    }
-
-    .nav-toggle.active .hamburger-line:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-
-    /* Overlay when menu is open */
-    .nav-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .nav-overlay.active {
-      opacity: 1;
-      visibility: visible;
+    .external-btn:hover {
+      transform: translateY(-1px);
     }
   }
 
+  /* Tablet adjustments */
+  @media (max-width: 1100px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-menu-container {
+      width: 260px;
+    }
+  }
+
+  /* Small mobile adjustments */
   @media (max-width: 480px) {
     .nav-container {
       height: 3.25rem;
+      padding: 0 0.75rem;
     }
 
     .nav-logo {
@@ -401,121 +481,154 @@ const { logoSrc, logoAlt, brandName, navItems, externalLinks } = Astro.props;
 
     .nav-menu-container {
       width: 100%;
-      max-width: none;
+      padding: 70px 20px 20px;
+    }
+
+    .nav-toggle {
+      width: 40px;
+      height: 40px;
+      padding: 6px;
+    }
+
+    .hamburger-line {
+      width: 20px;
+      height: 2px;
+      margin: 1.5px 0;
+    }
+  }
+
+  /* Desktop hover effects */
+  @media (min-width: 1200px) {
+    .nav-menu > li {
+      position: relative;
+    }
+
+    .nav-menu > li::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #2563eb;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+      border-radius: 1px;
+    }
+
+    .nav-menu > li:hover::after {
+      width: 100%;
     }
   }
 </style>
 
 <script>
-  const navToggle = document.querySelector(".nav-toggle");
-  const navMenuContainer = document.querySelector(".nav-menu-container");
-  const dropdowns = document.querySelectorAll(".dropdown");
-  const navOverlay = document.createElement("div");
+  const navToggle = document.querySelector(".nav-toggle") as HTMLElement | null;
+  const navMenuContainer = document.querySelector(
+    ".nav-menu-container"
+  ) as HTMLElement | null;
+  const navOverlay = document.querySelector(
+    ".nav-overlay"
+  ) as HTMLElement | null;
 
-  // Create overlay element
-  navOverlay.className = "nav-overlay";
-  document.body.appendChild(navOverlay);
-
-  let isMobile = window.innerWidth <= 1100;
-
-  // Update on resize
-  window.addEventListener("resize", () => {
-    isMobile = window.innerWidth <= 1100;
-    if (!isMobile) {
-      closeMobileMenu();
-    }
+  // Add item index for staggered animations
+  const navItems = document.querySelectorAll<HTMLElement>(".nav-menu > li");
+  navItems.forEach((item, index) => {
+    item.style.setProperty("--item-index", index.toString());
   });
 
-  // Toggle mobile menu
-  if (navToggle && navMenuContainer) {
-    navToggle.addEventListener("click", (e) => {
-      e.stopPropagation();
-      toggleMobileMenu();
-    });
+  // Toggle menu open/close
+  navToggle?.addEventListener("click", () => {
+    if (!navMenuContainer) return;
+    const isActive = navMenuContainer.classList.contains("active");
+    isActive ? closeMenu() : openMenu();
+  });
+
+  function openMenu() {
+    if (navMenuContainer && navOverlay && navToggle) {
+      navMenuContainer.classList.add("active");
+      navOverlay.classList.add("active");
+      navToggle.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
   }
 
-  // Close menu when clicking overlay
-  navOverlay.addEventListener("click", closeMobileMenu);
-
-  // Handle dropdowns on mobile
-  dropdowns.forEach((dropdown) => {
-    const link = dropdown.querySelector(".nav-link");
-    if (!link) return;
-
-    link.addEventListener("click", (e) => {
-      const isMobileNow = window.innerWidth <= 1100; // check at click time
-
-      if (!isMobileNow) {
-        // Desktop → allow navigation
-        return;
-      }
-
-      // Mobile → toggle dropdown instead of navigating
-      e.preventDefault();
-      e.stopPropagation();
-
-      // Close other dropdowns
-      dropdowns.forEach((other) => {
-        if (other !== dropdown && other.classList.contains("active")) {
-          other.classList.remove("active");
-        }
-      });
-
-      // Toggle current dropdown
-      dropdown.classList.toggle("active");
-    });
-  });
-
-  // Close all when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!isMobile) return;
-
-    const target = e.target as Element; // assert it's not null
-    if (
-      !target.closest(".nav-menu-container") &&
-      !target.closest(".nav-toggle")
-    ) {
-      closeMobileMenu();
+  function closeMenu() {
+    if (navMenuContainer && navOverlay && navToggle) {
+      navMenuContainer.classList.remove("active");
+      navOverlay.classList.remove("active");
+      navToggle.classList.remove("active");
+      document.body.style.overflow = "";
     }
-  });
-
-  // Close on escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeMobileMenu();
-    }
-  });
-
-  // Close menu when clicking normal links
-  const navLinks = document.querySelectorAll(".nav-menu a:not(.nav-link)");
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (isMobile) {
-        closeMobileMenu();
-      }
-    });
-  });
-
-  function toggleMobileMenu() {
-    navMenuContainer?.classList.toggle("active");
-    navOverlay.classList.toggle("active");
-    navToggle?.classList.toggle("active");
-    document.body.style.overflow = navMenuContainer?.classList.contains(
-      "active"
-    )
-      ? "hidden"
-      : "";
-  }
-
-  function closeMobileMenu() {
-    navMenuContainer?.classList.remove("active");
-    navOverlay.classList.remove("active");
-    navToggle?.classList.remove("active");
-    document.body.style.overflow = "";
 
     // Close all dropdowns
-    dropdowns.forEach((dropdown) => {
-      dropdown.classList.remove("active");
+    document
+      .querySelectorAll<HTMLElement>(".dropdown.active")
+      .forEach((dropdown) => {
+        dropdown.classList.remove("active");
+      });
+
+    // Also explicitly hide all dropdown menus (fixes lingering items)
+    document.querySelectorAll<HTMLElement>(".dropdown-menu").forEach((menu) => {
+      menu.style.display = "none";
     });
   }
+
+  // Close on overlay click
+  navOverlay?.addEventListener("click", closeMenu);
+
+  // Handle links & dropdown toggling
+  document
+    .querySelectorAll<HTMLAnchorElement>(".nav-menu a")
+    .forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const parentDropdown = link.closest(".dropdown");
+
+        // Mobile dropdown toggle
+        if (
+          parentDropdown &&
+          link === parentDropdown.querySelector(".nav-link") &&
+          window.innerWidth <= 1100
+        ) {
+          e.preventDefault();
+          parentDropdown.classList.toggle("active");
+          const dropdownMenu =
+            parentDropdown.querySelector<HTMLElement>(".dropdown-menu");
+          dropdownMenu!.style.display = parentDropdown.classList.contains(
+            "active"
+          )
+            ? "flex"
+            : "none";
+          return;
+        }
+
+        // For normal links: prevent instant jump
+        if (window.innerWidth <= 1100) {
+          e.preventDefault(); // stop instant navigation
+
+          const href = link.href;
+
+          closeMenu(); // start closing animation
+
+          // Wait for animation to finish (~400ms)
+          setTimeout(() => {
+            window.location.href = href;
+          }, 400);
+        }
+      });
+    });
+
+  // Close menu on escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeMenu();
+    }
+  });
+
+  // Close menu on resize (desktop mode)
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1100) {
+      closeMenu();
+    }
+  });
 </script>
