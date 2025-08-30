@@ -533,6 +533,7 @@ const { logoSrc, logoAlt, brandName, navItems, externalLinks } = Astro.props;
 
   // Add item index for staggered animations
   const navItems = document.querySelectorAll<HTMLElement>(".nav-menu > li");
+  const one = 1;
   navItems.forEach((item, index) => {
     item.style.setProperty("--item-index", index.toString());
   });
