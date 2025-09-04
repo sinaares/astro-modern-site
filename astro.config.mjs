@@ -9,8 +9,6 @@ export default defineConfig({
     integrations: [
     // Your existing integrations
   ],
-    site: 'https://sinaares.github.io/astro-modern-site/',
-  base: '/astro-modern-site/',  // <-- Add this line
   vite: {
     plugins: [tailwindcss()]
   }
