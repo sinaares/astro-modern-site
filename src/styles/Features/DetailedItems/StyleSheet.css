@@ -1,0 +1,64 @@
+
+  .detail-item {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem 3rem; /* Increased horizontal padding */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--index, 0) * 100ms + 200ms);
+    scroll-margin-top: 25vh; /* For smooth scrolling */
+    max-width: 100%;
+  }
+
+  .detail-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .detail-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  .detail-header h3 {
+    font-size: 1.75rem; /* Slightly larger title */
+    color: #1e293b;
+    margin: 0;
+  }
+
+  .detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* Increased gap between paragraphs */
+    margin-bottom: 2.5rem;
+  }
+
+  .detail-content p {
+    color: #475569;
+    line-height: 1.8; /* More spacious line height */
+    margin: 0;
+    font-size: 1.1rem; /* Slightly larger text */
+  }
+
+  .detail-content p:first-child {
+    font-weight: 500;
+    font-size: 1.15rem; /* Emphasized first paragraph */
+  }
+
+  @media (max-width: 768px) {
+    .detail-item {
+      padding: 2rem;
+    }
+
+    .detail-header h3 {
+      font-size: 1.5rem;
+    }
+
+    .detail-content p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+  }

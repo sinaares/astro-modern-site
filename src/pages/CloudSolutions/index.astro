@@ -1,0 +1,124 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CloudSolutions from "../../components/CloudSolutions.astro";
+
+const devCloudData = {
+  hero_title1: "Cloud",
+  hero_title2: "Project Management",
+  hero_description:
+    "Monitor all your development projects, deployments, and cloud resources efficiently. Our system provides real-time analytics, cost tracking, and performance optimization to maximize productivity and minimize overhead.",
+  overview_title: "System Overview",
+  overview_path:
+    "M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9m-6 0a2 2 0 0 1 2-2V6a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v1a2 2 0 0 1 2 2z",
+  overview_description:
+    "The Cloud Project Management System allows teams to monitor resources, project timelines, and deployment pipelines in one place. With real-time tracking, resource usage monitoring, and performance analytics, your cloud projects stay optimized and cost-efficient.",
+  features_title: "Core Features",
+  features_list: [
+    {
+      icon: "M22,12 18,12 15,21 9,3 6,12 2,12",
+      title: "Real-Time Project Tracking",
+      description:
+        "Monitor tasks, milestones, and deployment statuses in real time and respond quickly to changes.",
+    },
+    {
+      icon: "M12 2v6.5 M19.07 4.93l-4.6 4.6 M12 12r1 M5 12H2 M22 12h-3 m4.93 19.07l-4.6-4.6 M12 21.5V15 m6.07 4.07-4.6-4.6",
+      title: "Resource & Cost Tracking",
+      description:
+        "Track cloud resource usage and project budgets to prevent overspending and optimize allocations.",
+    },
+    {
+      icon: "M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10V6c0-2-2-4-4-4H4c-2 0-4 2-4 4v10c0 1.1.9 2 2 2h2 M7 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0z M9 17h6 M17 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0z",
+      title: "Project Performance Analytics",
+      description:
+        "Analyze team and project efficiency, resource consumption, and cloud deployment performance metrics.",
+    },
+    {
+      icon: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14,2 14,8 20,8 M16 13H8 M16 17H8 M10,9 9,9 8,9",
+      title: "Cost Optimization & Reporting",
+      description:
+        "Generate detailed reports and receive optimization recommendations to minimize cloud expenses.",
+    },
+    {
+      icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+      title: "Secure Data Management",
+      description:
+        "All project and cloud data are securely stored and protected against unauthorized access.",
+    },
+    {
+      icon: "M12 12a3 3 0 1 1 0 6a3 3 0 1 1 0 -6 M12 1v6m0 6v6 M21 12h-6m-6 0H3",
+      title: "Automated Alerts",
+      description:
+        "Receive notifications for unusual resource usage or potential project bottlenecks to act proactively.",
+    },
+  ],
+  benefits_title: "System Advantages",
+  benefits_list: [
+    {
+      title: "Cost Efficiency",
+      description:
+        "Monitor cloud spending in detail and optimize resource usage to reduce unnecessary expenses.",
+    },
+    {
+      title: "Insightful Analytics",
+      description:
+        "Analyze project and resource trends to identify bottlenecks and improve efficiency.",
+    },
+    {
+      title: "Operational Productivity",
+      description:
+        "Optimize team workflows and cloud deployments to maximize project productivity.",
+    },
+    {
+      title: "Goal-Oriented Management",
+      description:
+        "Set project targets and track progress continuously to ensure timely delivery and high performance.",
+    },
+  ],
+  security_title: "Intelligent Cloud Monitoring",
+  security_description:
+    "Our system uses advanced monitoring technologies to track cloud resources and project activity. Anomalies, inefficient usage, and potential risks are detected instantly. Integration with deployment pipelines allows real-time performance analysis and proactive management.",
+  security_features: [
+    { icon: "📍", label: "Integrated Cloud Monitoring" },
+    { icon: "⚖️", label: "Precise Resource Metrics" },
+    { icon: "🛡️", label: "Secure Cloud Access" },
+  ],
+  security_path: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z M9 12l2 2 4-4",
+  analytics_title: "Analytics & Reporting",
+  analytics_list: [
+    {
+      title: "Usage Trends",
+      description:
+        "Visualize and analyze cloud resource consumption trends over time.",
+    },
+    {
+      title: "Comparative Analysis",
+      description:
+        "Compare performance and efficiency across projects and teams.",
+    },
+    {
+      title: "Periodic Reports",
+      description:
+        "Generate daily, weekly, and monthly reports for better decision-making.",
+    },
+  ],
+};
+---
+
+<Layout title="Cloud Project Management">
+  <CloudSolutions
+    hero_title1={devCloudData.hero_title1}
+    hero_title2={devCloudData.hero_title2}
+    hero_description={devCloudData.hero_description}
+    overview_title={devCloudData.overview_title}
+    overview_path={devCloudData.overview_path}
+    overview_description={devCloudData.overview_description}
+    features_title={devCloudData.features_title}
+    features_list={devCloudData.features_list}
+    security_title={devCloudData.security_title}
+    security_description={devCloudData.security_description}
+    security_features={devCloudData.security_features}
+    security_path={devCloudData.security_path}
+    benefits_title={devCloudData.benefits_title}
+    benefits_list={devCloudData.benefits_list}
+  />
+</Layout>

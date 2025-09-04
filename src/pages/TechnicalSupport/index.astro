@@ -1,0 +1,111 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import TechnicalSupport from "../../components/TechnicalSupport.astro";
+
+const TechnicalSupport_Data = {
+  hero_subtitle: "TNB Support",
+  hero_title1: "Technical",
+  hero_title2: "Support and Service Management",
+  hero_description:
+    "The Technical Support System enables you to manage all your company's technical service processes digitally. Fault tracking, service requests, maintenance planning, and performance reporting are coordinated through a single platform.",
+
+  overview_title: "System Overview",
+  overview_path:
+    "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75",
+  overview_description:
+    "All functions required for technical support processes are offered with a user-friendly interface. From fault reporting to maintenance planning, from service requests to performance reporting – manage all your processes on a single platform.",
+
+  features_title: "System Features and Advantages",
+  features_list: [
+    {
+      icon: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",
+      title: "Fault Management",
+      description:
+        "All fault reports and historical records are stored centrally, optimizing tracking and resolution processes.",
+    },
+    {
+      icon: "M2 4h20v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4z M8 10h8 M8 14h4 M14 14h2",
+      title: "Service Requests",
+      description:
+        "User requests are recorded in the system, prioritized, and assigned to technical teams.",
+    },
+    {
+      icon: "M22 12 18 12 15 21 9 3 6 12 2 12",
+      title: "Maintenance Planning",
+      description:
+        "Periodic maintenance and inspection schedules are created to optimize technical operations.",
+    },
+    {
+      icon: "M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M8.5 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M17 11l2 2 4-4",
+      title: "Performance Reporting",
+      description:
+        "The performance of technical teams and the quality of service are monitored and evaluated with detailed reports.",
+    },
+    {
+      icon: "M12 2v4 M5 12H2 M22 12h-3 M12 22v-4a7 7 0 1 1 0-14v7l2 2",
+      title: "Support Process Management",
+      description:
+        "All technical support processes are digitally tracked, increasing process efficiency.",
+    },
+    {
+      icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+      title: "Mobile Access",
+      description:
+        "Technical teams can fully access the system via mobile devices, allowing for remote intervention and monitoring.",
+    },
+  ],
+
+  security_title: "Why TNB Technical Support?",
+  security_description:
+    "The TNB Technical Support System has been developed in full compliance with data security and business continuity standards. With infrastructure aligned to GDPR and ISO standards, sensitive technical data is protected. Thanks to ERP and maintenance management system integration, processes run smoothly.",
+  security_features: [
+    { icon: "📊", label: "Process Tracking and Analysis" },
+    { icon: "🔐", label: "Secure Data Management" },
+    { icon: "🔄", label: "ERP and Maintenance System Integration" },
+  ],
+  security_path: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z M9 12l2 2 4-4",
+
+  benefits_title: "Benefits to Your Business",
+  benefits_list: [
+    {
+      title: "Faster Resolution Times",
+      description:
+        "All fault and service requests are responded to quickly, minimizing operational disruptions.",
+    },
+    {
+      title: "Increased Efficiency",
+      description:
+        "With the digitalization of technical processes, team performance and workflow efficiency are improved.",
+    },
+    {
+      title: "Cost Optimization",
+      description:
+        "Thanks to planned maintenance and rapid intervention, maintenance and repair costs are reduced.",
+    },
+    {
+      title: "Advanced Reporting",
+      description:
+        "Detailed technical reports allow root cause analysis of problems and implementation of preventive measures.",
+    },
+  ],
+};
+---
+
+<Layout title="Technical Support and Service Management">
+  <TechnicalSupport
+    hero_subtitle={TechnicalSupport_Data.hero_subtitle}
+    hero_title1={TechnicalSupport_Data.hero_title1}
+    hero_title2={TechnicalSupport_Data.hero_title2}
+    overview_title={TechnicalSupport_Data.overview_title}
+    overview_path={TechnicalSupport_Data.overview_path}
+    overview_description={TechnicalSupport_Data.overview_description}
+    features_title={TechnicalSupport_Data.features_title}
+    features_list={TechnicalSupport_Data.features_list}
+    security_title={TechnicalSupport_Data.security_title}
+    security_description={TechnicalSupport_Data.security_description}
+    security_features={TechnicalSupport_Data.security_features}
+    security_path={TechnicalSupport_Data.security_path}
+    benefits_title={TechnicalSupport_Data.benefits_title}
+    benefits_list={TechnicalSupport_Data.benefits_list}
+  />
+</Layout>

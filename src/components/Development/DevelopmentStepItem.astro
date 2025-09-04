@@ -1,0 +1,114 @@
+---
+import "../../styles/Development/DevelopmentStepItem/StyleSheet.css";
+// StepItem.astro
+export interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  viewBox: string;
+  showAppButton?: boolean;
+  link: string;   // Android link
+  iosLink?: string; // iOS link
+  path: string;
+  path_ios?: string; // iOS path, if different
+  download_text_1?: string; // For Android
+  download_text_2?: string; // For iOS
+  download_text_3?: string; // For Android
+  download_text_4?: string; // For iOS
+}
+
+// Global counter for StepItems
+let stepCounter = 0; // module-level, persists across instances
+
+const {
+  title,
+  description,
+  icon,
+  viewBox,
+  showAppButton = false,
+  link,
+  iosLink,
+  path,
+  path_ios,
+  download_text_1,
+  download_text_2,
+  download_text_3,
+  download_text_4,
+} = Astro.props;
+
+// Sequential number and type
+const number = (stepCounter % 4) + 1; // cycles 1 → 4
+const type = stepCounter % 2 === 0 ? "step-up" : "step-down";
+
+// Increment for next component
+stepCounter++;
+---
+
+<div class={`step-item ${type}`}>
+  <div class="step-content">
+    <div class={`step-number step-${number}`}>
+      <svg
+        class="step-icon"
+        viewBox={viewBox}
+        fill="currentColor"
+        set:html={icon}
+      />
+    </div>
+    <div class="step-text">
+      <h3>{title}</h3>
+      <p>{description}</p>
+      {
+        showAppButton && (
+          <div class="app-download-container">
+            <!-- Android Button -->
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="app-download-btn android-btn"
+            >
+              <div class="btn-content">
+                <svg
+                  class="store-icon"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d={path} />
+                </svg>
+                <div class="btn-text">
+                  <span class="btn-label">{download_text_1}</span>
+                  <span class="btn-platform">{download_text_2}</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- iOS Button -->
+            {iosLink && (
+              <a
+                href={iosLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="app-download-btn ios-btn"
+              >
+                <div class="btn-content">
+                  <svg
+                    class="store-icon"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d={path_ios} />
+                  </svg>
+                  <div class="btn-text">
+                    <span class="btn-label">{download_text_3}</span>
+                    <span class="btn-platform">{download_text_4}</span>
+                  </div>
+                </div>
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</div>
+

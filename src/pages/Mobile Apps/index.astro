@@ -1,0 +1,100 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import MobileApps from "../../components/MobileApps.astro";
+---
+
+<Layout title="Development Dashboard">
+  <MobileApps
+    header_description="Manage all your digital development projects from a single platform. From code tracking to team management, project oversight to analytics, everything is at your fingertips."
+    header_sub_title1="Your Projects,"
+    header_sub_title2="Simplified"
+    cards={[
+      {
+        title: "Project Tracking System",
+        icon: "🗂️",
+        href: "/Development",
+        description:
+          "Monitor all your projects in real-time. Track progress, deadlines, and task assignments at a glance.",
+        features: [
+          { icon: "📍", text: "Real-time project tracking" },
+          { icon: "🚦", text: "Milestone and deadline monitoring" },
+          { icon: "🛡️", text: "Secure project data storage" },
+          { icon: "⚠️", text: "Instant alerts for delays" },
+        ],
+      },
+      {
+        title: "Team & HR Management",
+        icon: "👥",
+        href: "/TechnicalSupport",
+        description:
+          "Manage your development team efficiently with features for task assignment, performance monitoring, and collaboration.",
+        features: [
+          { icon: "📁", text: "Comprehensive team profiles" },
+          { icon: "💰", text: "Automated payroll & bonuses" },
+          { icon: "📊", text: "Performance tracking and reviews" },
+          { icon: "📱", text: "Cloud-based mobile access" },
+        ],
+      },
+      {
+        title: "Resource Management System",
+        icon: "🖥️",
+        href: "/UIDesign",
+        description:
+          "Manage your resources efficiently, from servers to development tools. Optimize usage and plan for scaling.",
+        features: [
+          { icon: "🔧", text: "Maintenance and updates tracking" },
+          { icon: "⏰", text: "License and subscription reminders" },
+          { icon: "📈", text: "Usage and cost analysis" },
+          { icon: "📋", text: "Comprehensive reporting" },
+        ],
+      },
+      {
+        title: "Access & Permissions",
+        icon: "🔐",
+        href: "/CloudSolutions",
+        description:
+          "Control team access to projects and resources securely. Manage permissions at all levels efficiently.",
+        features: [
+          { icon: "👆", text: "Role-based access control" },
+          { icon: "⏱️", text: "Automatic activity logging" },
+          { icon: "🔒", text: "Secure authentication" },
+          { icon: "📑", text: "Detailed access reports" },
+        ],
+      },
+      {
+        title: "Performance Analytics",
+        icon: "📊",
+        href: "/Marketing",
+        description:
+          "Analyze team and project performance using real-time metrics and detailed reports to improve efficiency.",
+        features: [
+          { icon: "📡", text: "Real-time data analysis" },
+          { icon: "🚀", text: "Task completion tracking" },
+          { icon: "⭐", text: "Team performance scoring" },
+          { icon: "📋", text: "Customizable dashboards" },
+        ],
+      },
+      {
+        title: "Budget & Cost Management",
+        icon: "💰",
+        href: "/SEOOptimization",
+        description:
+          "Track project budgets and expenses in detail. Get insights on cost optimization and financial planning.",
+        features: [
+          { icon: "⏱️", text: "Real-time budget monitoring" },
+          { icon: "💸", text: "Expense tracking and logging" },
+          { icon: "📊", text: "Resource-based cost analysis" },
+          { icon: "📈", text: "Financial reports & forecasting" },
+        ],
+      },
+    ]}
+    appDownload_title="Download the Development Dashboard App"
+    appDownload_text="Manage all your projects and team workflows from a single app. Available on Android and iOS."
+    appDownload_link_android="https://play.google.com/store/apps/details?id=com.devdashboard.app"
+    appDownload_link_ios="https://apps.apple.com/app/development-dashboard/id123456789"
+    android_text_1="DOWNLOAD NOW"
+    android_text_2="Google Play"
+    ios_text_1="DOWNLOAD"
+    ios_text_2="App Store"
+  />
+</Layout>

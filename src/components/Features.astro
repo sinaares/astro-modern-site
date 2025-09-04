@@ -2,6 +2,7 @@
 import FeaturesHeader from "./Features/FeaturesHeader.astro";
 import FeaturesGrid from "./Features/FeaturesGrid.astro";
 import FeatureDetails from "./Features/FeatureDetails.astro";
+import "../styles/Features/StyleSheet.css";
 interface Feature {
   icon: string;
   title: string;
@@ -50,54 +51,3 @@ const {
 <div id="features">
   <FeatureDetails details={details} />
 </div>
-
-<style>
-  .features {
-    padding: 8rem 0;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .features::before {
-    content: "";
-    position: absolute;
-    top: -20%;
-    right: -30%;
-    width: 60%;
-    height: 140%;
-    background: radial-gradient(
-      ellipse,
-      rgba(59, 130, 246, 0.15) 0%,
-      rgba(14, 165, 233, 0.1) 40%,
-      transparent 70%
-    );
-    transform: rotate(15deg);
-    z-index: 0;
-  }
-
-  .features::after {
-    content: "";
-    position: absolute;
-    bottom: -20%;
-    left: -30%;
-    width: 60%;
-    height: 140%;
-    background: radial-gradient(
-      ellipse,
-      rgba(14, 165, 233, 0.1) 0%,
-      rgba(59, 130, 246, 0.08) 40%,
-      transparent 70%
-    );
-    transform: rotate(-15deg);
-    z-index: 0;
-  }
-
-  .features-container {
-    position: relative;
-    z-index: 2;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-</style>

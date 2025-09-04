@@ -1,0 +1,20 @@
+---
+// src/components/Header.astro
+import "../../styles/Mobile Apps/MobileAppsHeader/StyleSheet.css";
+
+const { description, sub_title1, sub_title2 } = Astro.props;
+---
+
+<div class="cockpit-header">
+  <div class="header-bg"></div>
+  <div class="header-content">
+    <h1>
+      <span class="title-dark">{sub_title1}</span>
+      <br />
+      <span class="title-gradient">{sub_title2}</span>
+    </h1>
+    <p class="header-description">
+      {description}
+    </p>
+  </div>
+</div>

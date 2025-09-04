@@ -1,36 +1,38 @@
 ---
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+
 export interface Props {
   title: string;
 }
-export const phone = "+90 123 456 7890";
-export const email = "info@example.com";
+
+export const phone = "+1 555 123 4567";
+export const email = "info@newwebsite.com";
 const { title } = Astro.props;
 
 const navItems = [
-  { label: "Ana Sayfa", href: "/" },
-  { label: "Haberler", href: "/News" },
+  { label: "Home", href: "/" },
+  { label: "News", href: "/News" },
   {
-    label: "Hizmetler",
+    label: "Services",
     href: "/Services",
     submenu: [
-      { label: "Araç Takip", href: "/VehicleTrackingSystem" },
-      { label: "Filo Yönetimi", href: "/FleetManagement" },
-      { label: "PDKS Sistemleri", href: "/PDKS" },
-      { label: "Kokpit", href: "/Kokpit" },
-      { label: "SDS", href: "/SDS" },
-      { label: "Yakıt Yönetimi", href: "/FuelManagement" },
-      { label: "Personel ve IK", href: "/PersonelSystem" },
+      { label: "Web Development", href: "/Development" },
+      { label: "Mobile Apps", href: "/Mobile Apps" },
+      { label: "UI/UX Design", href: "/UIDesign" },
+      { label: "Cloud Solutions", href: "/CloudSolutions" },
+      { label: "Marketing", href: "/Marketing" },
+      { label: "SEO Optimization", href: "/SEOOptimization" },
+      { label: "Technical Support", href: "/TechnicalSupport" },
     ],
   },
-  { label: "Özellikler", href: "/Features" },
-  { label: "İletişim", href: "/Contact" },
+  { label: "Features", href: "/Features" },
+  { label: "Contact", href: "/Contact" },
 ];
 
 const externalLinks = [
-  { label: "Kokpit Giriş", href: "https://kokpit.tnbmobil.com.tr" },
-  { label: "TNB Filo Giriş", href: "https://ats.tnbmobil.com.tr" },
+  { label: "Client Portal", href: "https://www.google.com/" },
+  { label: "Dashboard", href: "https://www.google.com/" },
 ];
 
 const facebookPath =
@@ -41,41 +43,41 @@ const instagramPath =
   "M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8.44 2.44a1.06 1.06 0 1 1 0 2.12 1.06 1.06 0 0 1 0-2.12zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z";
 
 const serviceSection = {
-  title: "Hizmetlerimiz",
-  titleHref: "/Services",
+  title: "Our Services",
+  titleHref: "/services",
   links: [
-    { label: "Araç Takip Sistemi", href: "/VehicleTrackingSystem" },
-    { label: "Filo Yönetimi", href: "/FleetManagement" },
-    { label: "PDKS Sistemleri", href: "/PDKS" },
-    { label: "Personel ve Insan Kaynakları", href: "/PersonelSystem" },
-    { label: "Yakıt Yönetimi", href: "/FuelManagement" },
+    { label: "Web Development", href: "/web-development" },
+    { label: "Mobile Applications", href: "/mobile-apps" },
+    { label: "UI/UX Design", href: "/ui-ux" },
+    { label: "Cloud Solutions", href: "/cloud" },
+    { label: "Digital Marketing", href: "/marketing" },
   ],
 };
 
 const contactSection = {
-  title: "İletişim",
-  titleHref: "/Contact",
-  contactEmail: email, // pass string directly
-  phone: phone, // pass string directly
+  title: "Contact Us",
+  titleHref: "/contact",
+  contactEmail: email,
+  phone: phone,
   addresses: [
     {
-      href: "https://www.google.com/maps?q=Adalet,+Manas+Blv.+Yanyolu+No:47,+35530+Bayraklı/İzmir",
-      text: "Adalet, Manas Blv. Yanyolu No:47, 35530 Bayraklı/İzmir",
+      href: "https://www.google.com/maps?q=123+Main+Street,+City,+Country",
+      text: "123 Main Street, City, Country",
     },
   ],
   socialLinks: [
     {
-      href: "https://facebook.com/tnbmobil",
+      href: "https://facebook.com/newwebsite",
       label: "Facebook",
       svgPath: facebookPath,
     },
     {
-      href: "https://www.linkedin.com/company/tnb-mobil-z-mler-a-/",
+      href: "https://www.linkedin.com/company/newwebsite",
       label: "LinkedIn",
       svgPath: linkedinPath,
     },
     {
-      href: "https://www.instagram.com/tnb_mobilcozumler?igsh=MTVleXI1N2dhbTlmdw==",
+      href: "https://www.instagram.com/newwebsite",
       label: "Instagram",
       svgPath: instagramPath,
     },
@@ -84,19 +86,25 @@ const contactSection = {
 ---
 
 <!doctype html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="TNB Mobil - Dijital Dönüşüm ve Kurumsal Yönetim Çözümleri. Araç takip, filo yönetimi, PDKS ve mobil uygulamalar."
+      content="YourCompany - Innovative Solutions for Digital Transformation and Business Management. Web development, mobile apps, cloud solutions, and more."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="creative-logo-design-for-real-estate-company-vector.jpg"
+    />
+
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="creative-logo-design-for-real-estate-company-vector.jpg"
+      type="image/png"
       rel="stylesheet"
     />
     <style>
@@ -116,9 +124,9 @@ const contactSection = {
 
   <body>
     <Header
-      logoSrc="../1024x1024.jpg"
-      logoAlt="TNB LOGO"
-      brandName="TNB Mobil"
+      logoSrc="creative-logo-design-for-real-estate-company-vector.jpg"
+      logoAlt="YourCompany Logo"
+      brandName="YourCompany"
       navItems={navItems}
       externalLinks={externalLinks}
     />
@@ -126,12 +134,12 @@ const contactSection = {
       <slot />
     </main>
     <Footer
-      brandName="TNB Mobil"
+      brandName="YourCompany"
       brandHref="/"
-      brandDescription="Dijital dönüşüm ve kurumsal yönetim çözümlerinde lider. Teknoloji ile işlerinizi kolaylaştırıyoruz."
+      brandDescription="Innovative digital solutions for your business. We make technology work for you."
       serviceSection={serviceSection}
       contactSection={contactSection}
-      copyrightText="© 2025 TNB Mobil. Tüm hakları saklıdır."
+      copyrightText="© 2025 YourCompany. All rights reserved."
     />
   </body>
 </html>

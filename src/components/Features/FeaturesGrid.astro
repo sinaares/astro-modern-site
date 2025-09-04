@@ -1,5 +1,6 @@
 ---
 import FeatureItem from "./FeatureItem.astro";
+import "../../styles/Features/FeaturesGrid/StyleSheet.css";
 
 interface Feature {
   icon: string;
@@ -32,19 +33,3 @@ const { features, text_icon, text } = Astro.props as Props;
     ))
   }
 </div>
-
-<style>
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3rem;
-    margin-top: 4rem;
-  }
-
-  @media (max-width: 768px) {
-    .features-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-  }
-</style>

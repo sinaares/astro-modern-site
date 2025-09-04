@@ -1,0 +1,71 @@
+---
+// components/AppDownloadSection.astro
+import "../../styles/Development/DevelopmentAppDownloader/StyleSheet.css";
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  features?: string[];
+  playStoreLink?: string;
+  playStoreBadgeSrc?: string;
+  appStoreLink?: string;
+  appStoreBadgeSrc?: string;
+}
+
+const {
+  title,
+  subtitle,
+  features = [],
+  playStoreLink,
+  playStoreBadgeSrc,
+  appStoreLink,
+  appStoreBadgeSrc,
+} = Astro.props;
+---
+
+<div class="app-section">
+  <div class="app-content">
+    <div class="app-text">
+      <h3>{title}</h3>
+      <p>{subtitle}</p>
+      <ul class="app-features">
+        {features.map((feature) => <li>✓ {feature}</li>)}
+      </ul>
+    </div>
+    <div class="app-download">
+      <div class="download-buttons">
+        {
+          playStoreLink && playStoreBadgeSrc && (
+            <a
+              href={playStoreLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="store-button"
+            >
+              <img
+                src={playStoreBadgeSrc}
+                alt="Google Play'den indirin"
+                class="store-badge"
+              />
+            </a>
+          )
+        }
+        {
+          appStoreLink && appStoreBadgeSrc && (
+            <a
+              href={appStoreLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="store-button"
+            >
+              <img
+                src={appStoreBadgeSrc}
+                alt="App Store'dan indirin"
+                class="store-badge"
+              />
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</div>

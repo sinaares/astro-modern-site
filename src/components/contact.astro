@@ -4,6 +4,7 @@ import ContactHeader from "./Contact/ContactHeader.astro";
 import ContactInfo from "./Contact/ContactInfo.astro";
 import ContactForm from "./Contact/ContactForm.astro";
 import ContactMap from "./Contact/ContactMap.astro";
+import "../styles/Contact/StyleSheet.css";
 
 // Destructure all props, including contactItems
 const {
@@ -48,87 +49,4 @@ const {
   </div>
 </section>
 
-<style>
-  .contact {
-    padding: 6rem 0;
-    background: #f8fafc;
-  }
-
-  .contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-    margin-bottom: 4rem;
-  }
-
-  .form-block {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .map-block {
-    width: 100%;
-  }
-
-  @media (max-width: 768px) {
-    .contact {
-      padding: 4rem 0;
-    }
-
-    .contact-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById(
-      "contact-form"
-    ) as HTMLFormElement | null;
-
-    if (!form) return;
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const submitBtn = form.querySelector('button[type="submit"]');
-
-      if (submitBtn instanceof HTMLButtonElement) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Gönderiliyor...";
-      }
-      try {
-        const formData = new FormData(form);
-        const response = await fetch(
-          "https://formsubmit.co/ajax/sina.ares85@gmail.com",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
-
-        if (response.ok) {
-          alert("Mesaj başarıyla gönderildi!");
-          form.reset();
-        } else {
-          alert("Bir hata oluştu. Lütfen tekrar deneyin.");
-        }
-      } catch (error) {
-        alert("Bir hata oluştu. Lütfen tekrar deneyin.");
-      } finally {
-        if (submitBtn instanceof HTMLButtonElement) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Gönder";
-        }
-      }
-    });
-  });
-</script>
+<script src="../Utils/Contact/index.ts"></script>

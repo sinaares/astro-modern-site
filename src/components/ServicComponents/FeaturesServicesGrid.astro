@@ -1,6 +1,7 @@
 ---
 // components/FeaturesSection.astro
 import FeatureCard from "./FeatureCard.astro";
+import "../../styles/ServicesComponents/FeaturesServiceGrid/StyleSheet.css";
 
 export interface Feature {
   icon: string;
@@ -25,39 +26,3 @@ const { title, features = [] } = Astro.props;
     ))
   }
 </div>
-
-<style>
-  .section-title {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #1f2937;
-    text-align: center;
-    margin-bottom: 50px;
-    position: relative;
-  }
-
-  .section-title::after {
-    content: "";
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, #3b82f6, #10b981);
-    border-radius: 2px;
-  }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-  }
-
-  @media (max-width: 768px) {
-    .features-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

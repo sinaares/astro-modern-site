@@ -1,0 +1,131 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SEOOptimization from "../../components/SEOOptimization.astro";
+
+const SEO_Data = {
+  hero_subtitle: "SEO Optimization",
+  hero_title1: "Optimize Your",
+  hero_title2: "Website for Search Engines",
+  hero_description:
+    "Our SEO Optimization service helps your website rank higher on search engines through keyword analysis, content optimization, and technical SEO improvements.",
+
+  overview_title: "SEO Overview",
+  overview_path:
+    "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z",
+  overview_description:
+    "The SEO Optimization process aims to align your website with search engine algorithms, enhance user experience, and increase organic traffic. It offers comprehensive optimization through keyword research, content strategy, technical SEO, and backlink building.",
+
+  features_title: "Key Features",
+  features_list: [
+    {
+      icon: "M5 13l4 4L19 7",
+      title: "Keyword Analysis",
+      description:
+        "Identifying target keywords for your website and conducting competitor analysis.",
+    },
+    {
+      icon: "M12 2v6.5 M19.07 4.93l-4.6 4.6",
+      title: "Content Optimization",
+      description:
+        "Optimizing your web page content for SEO and creating search engine–friendly content.",
+    },
+    {
+      icon: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2",
+      title: "Technical SEO Checks",
+      description:
+        "Improving site speed, mobile responsiveness, URL structure, and meta tags.",
+    },
+    {
+      icon: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z",
+      title: "Reporting & Analysis",
+      description:
+        "Tracking SEO performance and providing detailed analysis reports with improvement suggestions.",
+    },
+    {
+      icon: "M2 3h20v14H2z M8 21h8 M12 17v4",
+      title: "Backlink Strategy",
+      description:
+        "Building high-quality backlinks to increase your website’s authority.",
+    },
+    {
+      icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+      title: "SEO Security",
+      description:
+        "Ensuring your site remains SEO-safe and compliant with algorithm updates.",
+    },
+  ],
+
+  benefits_title: "SEO Benefits",
+  benefits_list: [
+    {
+      title: "Increased Organic Traffic",
+      description:
+        "Rank higher on search engines and boost your visitor count.",
+    },
+    {
+      title: "Improved Brand Awareness",
+      description:
+        "SEO enhances your visibility and strengthens brand recognition.",
+    },
+    {
+      title: "Lower Advertising Costs",
+      description: "Reduce ad spend by driving more traffic organically.",
+    },
+    {
+      title: "Better User Experience",
+      description:
+        "Optimized site structure and content improve overall user experience.",
+    },
+  ],
+
+  security_title: "Advanced SEO Strategies",
+  security_description:
+    "Our SEO strategies are built on the latest algorithms and in-depth analysis to boost your website’s performance.",
+  security_features: [
+    { icon: "🔍", label: "Keyword Research" },
+    { icon: "📝", label: "Content Optimization" },
+    { icon: "⚙️", label: "Technical SEO Integration" },
+  ],
+  security_path: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+
+  performance_title: "Performance Metrics",
+  performance_metrics: [
+    {
+      icon_path: "M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3",
+      title: "Ranking Tracking",
+      description: "Monitor your keyword rankings across search engines.",
+    },
+    {
+      icon_path: 'circle cx="12" cy="12" r="3" M12 1v6m0 6v6',
+      title: "Site Traffic Analysis",
+      description: "Analyze visitor data and traffic sources for your website.",
+    },
+    {
+      icon_path: 'polyline points="21,8 21,21 3,21 3,8"',
+      title: "SEO Reporting",
+      description:
+        "Get performance reports with actionable improvement suggestions.",
+    },
+  ],
+};
+---
+
+<Layout title="SEO Optimization">
+  <SEOOptimization
+    hero_subtitle={SEO_Data.hero_subtitle}
+    hero_title1={SEO_Data.hero_title1}
+    hero_title2={SEO_Data.hero_title2}
+    hero_description={SEO_Data.hero_description}
+    overview_title={SEO_Data.overview_title}
+    overview_path={SEO_Data.overview_path}
+    overview_description={SEO_Data.overview_description}
+    features_title={SEO_Data.features_title}
+    features_list={SEO_Data.features_list}
+    security_title={SEO_Data.security_title}
+    security_description={SEO_Data.security_description}
+    security_features={SEO_Data.security_features}
+    security_path={SEO_Data.security_path}
+    benefits_title={SEO_Data.benefits_title}
+    benefits_list={SEO_Data.benefits_list}
+  />
+</Layout>

@@ -1,0 +1,77 @@
+---
+// src/pages/ProjectManagement.astro
+import Layout from "../../layouts/Layout.astro";
+import UIDesign from "../../components/UIDesign.astro";
+
+const projectManagementData = {
+  hero_subtitle: "Dev Dashboard",
+  hero_title1: "Project",
+  hero_title2: "Management System",
+  hero_description:
+    "The Project Management System lets you oversee all your development projects from start to finish. Track tasks, deadlines, team performance, and milestones from a single, centralized dashboard.",
+  overview_title: "System Overview",
+  overview_path:
+    "M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1",
+  overview_description:
+    "Our system simplifies complex project management workflows, reduces manual errors, and ensures operational continuity. Manage all projects from one platform and make data-driven decisions in real time.",
+  features_title: "System Features & Advantages",
+  features_list: [
+    {
+      icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z M9 12l2 2 4-4",
+      title: "Comprehensive Project Tracking",
+      description:
+        "Monitor tasks, deadlines, milestones, and team contributions from a single centralized dashboard.",
+    },
+    {
+      icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+      title: "Integration Capabilities",
+      description:
+        "Integrate seamlessly with communication, version control, and analytics tools for streamlined workflows.",
+    },
+  ],
+  security_title: "Why Choose Dev Dashboard?",
+  security_description:
+    "Our system stands out with a user-friendly interface, strong security measures, and full customization options. Role-based access, approval workflows, and detailed reporting give you complete control over your projects.",
+  security_features: [
+    { icon: "💻", label: "All Projects in One Dashboard" },
+    { icon: "⏰", label: "Automated Reminders" },
+    { icon: "📊", label: "Detailed Performance Analytics" },
+  ],
+  security_path:
+    "M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1",
+  benefits_title: "Benefits for Your Team",
+  benefits_list: [
+    {
+      title: "Cost Efficiency",
+      description:
+        "Analyze resources, timelines, and budgets to optimize project spending and improve ROI.",
+    },
+    {
+      title: "Compliance & Standards",
+      description:
+        "Track project milestones, quality checks, and team workflows to ensure compliance with industry standards.",
+    },
+    // Add more benefit items as needed
+  ],
+};
+---
+
+<Layout title="Project Management System | Dev Dashboard">
+  <UIDesign
+    hero_subtitle={projectManagementData.hero_subtitle}
+    hero_title1={projectManagementData.hero_title1}
+    hero_title2={projectManagementData.hero_title2}
+    hero_description={projectManagementData.hero_description}
+    overview_title={projectManagementData.overview_title}
+    overview_path={projectManagementData.overview_path}
+    overview_description={projectManagementData.overview_description}
+    features_title={projectManagementData.features_title}
+    features_list={projectManagementData.features_list}
+    security_title={projectManagementData.security_title}
+    security_description={projectManagementData.security_description}
+    security_features={projectManagementData.security_features}
+    security_path={projectManagementData.security_path}
+    benefits_title={projectManagementData.benefits_title}
+    benefits_list={projectManagementData.benefits_list}
+  />
+</Layout>

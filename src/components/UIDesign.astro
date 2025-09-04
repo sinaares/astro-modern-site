@@ -1,0 +1,60 @@
+---
+// FleetManagement.astro
+import FleetHero from "./ServicComponents/FleetHero.astro";
+import OverviewCard from "./ServicComponents/OverviewCard.astro";
+import FeaturesServicesGrid from "./ServicComponents/FeaturesServicesGrid.astro";
+import SecuritySection from "./ServicComponents/SecuritySection.astro";
+import BenefitsSection from "./ServicComponents/BenefitsSection.astro";
+import FloatingShapes from "./ServicComponents/FloatingShapes.astro";
+import "../styles/ServicesComponents/UIDesign/StyleSheet.css";
+
+const {
+  hero_subtitle,
+  hero_title1,
+  hero_title2,
+  hero_description,
+  overview_title,
+  overview_path,
+  overview_description,
+  features_title,
+  features_list = [],
+  security_title,
+  security_description,
+  security_features = [],
+  security_path,
+  benefits_title,
+  benefits_list = [],
+} = Astro.props;
+---
+
+<section class="fleet-section">
+  <FloatingShapes />
+
+  <FleetHero
+    subtitle={hero_subtitle}
+    title1={hero_title1}
+    title2={hero_title2}
+    description={hero_description}
+  />
+
+  <div class="content-section">
+    <div class="content-container">
+      <OverviewCard
+        title={overview_title}
+        path={overview_path}
+        description={overview_description}
+      />
+
+      <FeaturesServicesGrid title={features_title} features={features_list} />
+
+      <SecuritySection
+        title={security_title}
+        description={security_description}
+        features={security_features}
+        path={security_path}
+      />
+
+      <BenefitsSection title={benefits_title} benefits={benefits_list} />
+    </div>
+  </div>
+</section>

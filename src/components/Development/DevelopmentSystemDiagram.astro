@@ -1,0 +1,120 @@
+---
+// Props and interface same as before
+import "../../styles/Development/DevelopmentSystemDiagram/StyleSheet.css";
+export interface IconItem {
+  name: string;
+  path: string;
+  type: "satellite" | "vehicle" | "server" | "mobile" | "desktop";
+  hasIndicator?: boolean;
+}
+
+export interface Props {
+  icons?: IconItem[];
+}
+
+const { icons = [] }: Props = Astro.props;
+
+const groupedIcons = {
+  top: icons.filter((i) => i.type !== "mobile" && i.type !== "desktop"),
+  bottom: icons.filter((i) => i.type === "mobile" || i.type === "desktop"),
+};
+---
+
+<section class="system-diagram">
+  <div class="diagram-background">
+    <div class="grid-pattern"></div>
+    <div class="gradient-overlay"></div>
+  </div>
+
+  <div class="diagram-column">
+    {/* Top Column Items */}
+    <div class="top-icons">
+      {
+        groupedIcons.top.map((icon, idx) => (
+          <div class={`diagram-item ${icon.type}`}>
+            <div class="icon-wrapper">
+              <div class={`icon-container ${icon.type}`}>
+                <div class="icon-background" />
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d={icon.path} />
+                </svg>
+                {icon.hasIndicator && (
+                  <div class="status-indicator">
+                    <div class="indicator-pulse" />
+                  </div>
+                )}
+              </div>
+              <span class="icon-label">{icon.name}</span>
+            </div>
+
+            {idx !== groupedIcons.top.length - 1 && (
+              <div class="standalone-connector">
+                <div class="line-core" />
+                <div class="line-glow" />
+                <div class="line-shine" />
+                <div class="flow-particle" />
+                <div class="flow-particle delay-1" />
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+    {/* Bottom Row Items */}
+    {
+      groupedIcons.bottom.length > 0 && (
+        <>
+          <div class="server-connectors">
+            <div class="connector-branch left">
+              <div class="vertical-line">
+                <div class="line-core" />
+                <div class="line-glow" />
+                <div class="line-shine" />
+              </div>
+              <div class="horizontal-line">
+                <div class="line-core" />
+                <div class="line-glow" />
+                <div class="line-shine" />
+              </div>
+            </div>
+
+            <div class="connector-branch right">
+              <div class="vertical-line">
+                <div class="line-core" />
+                <div class="line-glow" />
+                <div class="line-shine" />
+              </div>
+              <div class="horizontal-line">
+                <div class="line-core" />
+                <div class="line-glow" />
+                <div class="line-shine" />
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-icons">
+            {groupedIcons.bottom.map((icon) => (
+              <div class={`diagram-item ${icon.type}`}>
+                <div class="icon-wrapper">
+                  <div class={`icon-container ${icon.type}`}>
+                    <div class="icon-background" />
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                      <path d={icon.path} />
+                    </svg>
+                    {icon.hasIndicator && (
+                      <div class="status-indicator">
+                        <div class="indicator-pulse" />
+                      </div>
+                    )}
+                  </div>
+                  <span class="icon-label">{icon.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )
+    }
+  </div>
+</section>

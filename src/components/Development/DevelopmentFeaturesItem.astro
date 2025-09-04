@@ -1,0 +1,32 @@
+---
+// components/FeatureItem.astro
+import "../../styles/Development/DevelopmentFeaturesItem/StyleSheet.css";
+export interface Props {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const { title, description, icon } = Astro.props;
+
+// Declare the counter on the global type to satisfy TypeScript
+declare global {
+  var __featureCounter: number | undefined;
+}
+
+// Initialize if not already
+if (globalThis.__featureCounter === undefined) globalThis.__featureCounter = 0;
+globalThis.__featureCounter++;
+
+// Decide type automatically: odd/even sequence
+const type =
+  globalThis.__featureCounter % 2 === 0 ? "feature-down" : "feature-up";
+---
+
+<div class={`feature-item ${type}`}>
+  <div class="feature-icon">
+    <svg fill="currentColor" viewBox="0 0 24 24" set:html={icon} />
+  </div>
+  <h4>{title}</h4>
+  <p>{description}</p>
+</div>

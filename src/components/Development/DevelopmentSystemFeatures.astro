@@ -1,0 +1,39 @@
+---
+// components/SystemFeatures.astro
+import DevelopmentFeaturesItem from "./DevelopmentFeaturesItem.astro";
+import "../../styles/Development/DevelopmentSystemFeatures/StyleSheet.css";
+
+export interface Feature {
+  type: "feature-up" | "feature-down";
+  title: string;
+  description: string;
+  icon: string; // SVG path string
+}
+
+export interface Props {
+  features: Feature[];
+  headerTitle?: string; // new optional prop
+  headerSubtitle?: string; // new optional prop
+}
+
+const { features, headerTitle, headerSubtitle } = Astro.props;
+---
+
+<div class="features-section">
+  <div class="features-header">
+    <h3>{headerTitle}</h3>
+    <p>{headerSubtitle}</p>
+  </div>
+
+  <div class="features-grid">
+    {
+      features.map((feature) => (
+        <DevelopmentFeaturesItem
+          title={feature.title}
+          description={feature.description}
+          icon={feature.icon}
+        />
+      ))
+    }
+  </div>
+</div>

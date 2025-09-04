@@ -1,0 +1,202 @@
+
+  .app-download {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    border-radius: 16px;
+    padding: 40px;
+    margin: 60px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .app-download::before,
+  .app-download::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+  }
+
+  .app-download::before {
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .app-download::after {
+    bottom: -80px;
+    left: -80px;
+    width: 250px;
+    height: 250px;
+  }
+
+  .download-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .download-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    margin-top: 0;
+  }
+
+  .download-text {
+    margin-bottom: 40px;
+    opacity: 0.9;
+  }
+
+  .download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 20px;
+    min-width: 200px;
+    height: 64px;
+    background: #000;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .download-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+
+  .download-btn:hover::before {
+    left: 100%;
+  }
+
+  .download-btn.google {
+    background: linear-gradient(135deg, #1e7e34, #28a745);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .download-btn.apple {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  .download-btn.google:hover {
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+  }
+
+  .download-btn.apple:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .btn-icon {
+    flex-shrink: 0;
+    margin-right: 12px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .download-btn:hover .btn-icon {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+
+  .btn-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .btn-label {
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.8;
+    line-height: 1;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-store {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .app-download {
+      padding: 30px 20px;
+    }
+
+    .download-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .download-btn {
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
+    }
+
+    .btn-content {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .download-btn {
+      min-width: 240px;
+      height: 60px;
+      padding: 10px 16px;
+    }
+
+    .btn-icon {
+      width: 28px;
+      height: 28px;
+      margin-right: 10px;
+    }
+
+    .btn-store {
+      font-size: 1rem;
+    }
+  }

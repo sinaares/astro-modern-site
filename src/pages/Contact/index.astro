@@ -5,40 +5,40 @@ import Contact from "../../components/contact.astro";
 const contactItems = [
   { type: "email", value: email, icon: "✉️" },
   { type: "phone", value: phone, icon: "📱" },
-  { type: "location", value: "İzmir, Türkiye", icon: "📍" },
+  { type: "location", value: "New York, USA", icon: "📍" },
 ];
 ---
 
-<Layout title="İletişim | TNB Mobil Çözümler">
+<Layout title="Contact Us | Technical Solutions">
   <Contact
-    titleHeader="Bizimle İletişime Geçin"
-    lead="Size en kısa sürede dönüş yapabilmemiz için iletişim formunu doldurun veya aşağıdaki bilgilerden bize ulaşın."
-    email="sosyalmedya@tnbmobil.com"
-    titleInfo="İletişim Bilgilerimiz"
-    phone="+90 850 360 0681"
-    location="İzmir, Türkiye"
-    mapLocation="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3124.4734487352935!2d27.174140325915566!3d38.45362972182216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b962a90bd90ea1%3A0x81dea1b5a505a1a0!2sAdalet%2C%20Manas%20Blv.%20Yanyolu%20No%3A47%2C%2035530%20Bayrakl%C4%B1%2F%C4%B0zmir!5e0!3m2!1sen!2str!4v1754472324003!5m2!1sen!2str"
-    titleForm="Sık Sorulan Sorular"
+    titleHeader="Get in Touch"
+    lead="Fill out the contact form or reach us directly using the information below. Our team will get back to you as soon as possible."
+    email="support@example.com"
+    titleInfo="Our Contact Information"
+    phone="+1 555 123 4567"
+    location="New York, USA"
+    mapLocation="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.860179916676!2d-73.97124818459388!3d40.78306037932461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2588f181d9e29%3A0xbbb0f65f0c356c3!2sCentral%20Park!5e0!3m2!1sen!2sus!4v1754472324003!5m2!1sen!2sus"
+    titleForm="Frequently Asked Questions"
     questionSection={[
       {
-        question: "Hizmetleriniz hakkında nasıl bilgi alabilirim?",
+        question: "How can I get information about your services?",
         answer:
-          "Web sitemizi ziyaret edebilir veya doğrudan bizimle iletişime geçebilirsiniz. Size en uygun çözümü sunmak için detaylı bilgi verebiliriz.",
+          "You can visit our website or contact us directly. We’ll be happy to provide detailed information tailored to your needs.",
       },
       {
-        question: "Fiyatlandırma nasıl çalışıyor?",
+        question: "How does pricing work?",
         answer:
-          "Fiyatlarımız proje kapsamına göre belirlenir. Ücretsiz bir değerlendirme için bizimle iletişime geçin.",
+          "Pricing depends on the scope of each project. Contact us for a free evaluation.",
       },
       {
-        question: "Destek hizmeti sağlıyor musunuz?",
+        question: "Do you provide support services?",
         answer:
-          "Evet, 7/24 teknik destek hizmeti sunuyoruz. Herhangi bir sorunuz olduğunda bizimle iletişime geçebilirsiniz.",
+          "Yes, we offer 24/7 technical support. You can reach us anytime if you need assistance.",
       },
       {
-        question: "Projeler ne kadar sürede tamamlanır?",
+        question: "How long does it take to complete a project?",
         answer:
-          "Proje süresi, karmaşıklığa ve kapsamına bağlı olarak değişir. Genellikle 2-8 hafta arasında tamamlanır.",
+          "Project duration depends on complexity and scope. Most projects are completed within 2–8 weeks.",
       },
     ]}
     contactItems={contactItems}

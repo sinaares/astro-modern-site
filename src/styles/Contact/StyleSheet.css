@@ -1,0 +1,38 @@
+
+  .contact {
+    padding: 6rem 0;
+    background: #f8fafc;
+  }
+
+  .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  .form-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .map-block {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .contact {
+      padding: 4rem 0;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }

@@ -1,0 +1,42 @@
+---
+// src/components/DashboardCard.astro
+import "../../styles/Mobile Apps/MobileAppsDashboardCard/StyleSheet.css";
+
+// Define the Feature type
+type Feature = {
+  icon: string;
+  text: string;
+};
+
+// Define the component props
+interface Props {
+  title: string;
+  icon: string;
+  description: string;
+  features: Feature[];
+  href: string;
+}
+
+// Destructure with TypeScript typing
+const { title, icon, description, features, href } = Astro.props as Props;
+---
+
+<a href={href} class="dashboard-card">
+  <div class="card-header">
+    <div class="card-icon">{icon}</div>
+    <h2 class="card-title">{title}</h2>
+  </div>
+  <div class="card-body">
+    <p class="card-description">{description}</p>
+    <ul class="feature-list">
+      {
+        features.map((feature: Feature) => (
+          <li class="feature-item">
+            <span class="feature-icon">{feature.icon}</span>
+            <span>{feature.text}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</a>

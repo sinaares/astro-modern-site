@@ -1,0 +1,47 @@
+
+  :root {
+    --primary: #2563eb;
+    --primary-light: #60a5fa;
+    --secondary: #10b981;
+    --dark: #1f2937;
+    --gray: #6b7280;
+    --light: #f9fafb;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+  }
+
+  body {
+    background-color: #f8fafc;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  .cockpit-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Dashboard Grid */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin: 50px 0;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+    }
+  }

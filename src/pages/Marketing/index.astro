@@ -1,0 +1,105 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Marketing from "../../components/Marketing.astro";
+
+const devAccessData = {
+  hero_title1: "Team &",
+  hero_title2: "Access Management",
+  hero_description:
+    "Manage your development team’s access and activity efficiently. Monitor logins, permissions, and project access in real time using secure digital solutions.",
+  overview_title: "System Overview",
+  overview_path: "M7 11V7a5 5 0 0 1 10 0v4",
+  overview_description:
+    "Our Team & Access Management system allows you to monitor team members’ project access, login activity, and permissions digitally. Role-based access control, audit logs, and activity tracking ensure security while maintaining operational efficiency.",
+  features_title: "Key Features & Advantages",
+  features_list: [
+    {
+      icon: "M9 12l2 2 4-4 M12 12m-9 0a9 9 0 1 0 18 0 9 9 0 1 0-18 0",
+      title: "Secure Login",
+      description:
+        "Team members can log in securely with role-based credentials, ensuring data protection.",
+    },
+    {
+      icon: "M12 1v6m0 6v6 M21 12h-6m-6 0H3 M12 12m-3 0a3 3 0 1 0 6 0 3 3 0 1 0-6 0",
+      title: "Automatic Permission Management",
+      description:
+        "Access levels and project permissions are automatically assigned and updated according to roles.",
+    },
+    {
+      icon: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14,2 14,8 20,8 M16 13H8 M16 17H8 M10,9 9,9 8,9",
+      title: "Digital Activity Logs",
+      description:
+        "All team activity and project access is logged digitally and can be monitored in real time.",
+    },
+    {
+      icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+      title: "Role-Based Access",
+      description:
+        "Ensure that only authorized team members can access specific projects or repositories.",
+    },
+    {
+      icon: "M2 3h20v14H2z M8 21h8 M12 17v4",
+      title: "Device Integration",
+      description:
+        "Integrate with hardware and software tools like MFA devices, security tokens, and biometric scanners.",
+    },
+    {
+      icon: "M22 12h-4l-3 9L9 3 6 12H2",
+      title: "Real-Time Reporting",
+      description:
+        "Managers can generate real-time reports of team activity and project access easily.",
+    },
+  ],
+  security_title: "Security Measures",
+  security_description:
+    "The system prevents unauthorized access and detects potential security breaches immediately. Role-based permissions and audit logs enhance both digital security and operational control.",
+  security_features: [
+    { icon: "🔒", label: "Unauthorized Access Prevention" },
+    { icon: "⚡", label: "Immediate Breach Detection" },
+    { icon: "🛡️", label: "Enhanced Digital Security" },
+  ],
+  security_path: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z M9 12l2 2 4-4",
+  benefits_title: "Business Benefits",
+  benefits_list: [
+    {
+      title: "User-Friendly Interface",
+      description:
+        "Team & Access Management offers an intuitive interface to monitor team activity and project access quickly.",
+    },
+    {
+      title: "Detailed Reporting",
+      description:
+        "Managers receive detailed reports and analytics to make informed decisions about team productivity and security.",
+    },
+    {
+      title: "Efficient Team Management",
+      description:
+        "Integration of these systems improves workflow efficiency and enhances project security standards.",
+    },
+    {
+      title: "Organizational Impact",
+      description:
+        "Provides practical and secure solutions for both team members and management, contributing to overall operational efficiency.",
+    },
+  ],
+};
+---
+
+<Layout title="Team & Access Management">
+  <Marketing
+    hero_title1={devAccessData.hero_title1}
+    hero_title2={devAccessData.hero_title2}
+    hero_description={devAccessData.hero_description}
+    overview_title={devAccessData.overview_title}
+    overview_path={devAccessData.overview_path}
+    overview_description={devAccessData.overview_description}
+    features_title={devAccessData.features_title}
+    features_list={devAccessData.features_list}
+    security_title={devAccessData.security_title}
+    security_description={devAccessData.security_description}
+    security_features={devAccessData.security_features}
+    security_path={devAccessData.security_path}
+    benefits_title={devAccessData.benefits_title}
+    benefits_list={devAccessData.benefits_list}
+  />
+</Layout>

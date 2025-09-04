@@ -1,0 +1,66 @@
+---
+import Header from "./MobileApps/MobileAppsHeader.astro";
+import DashboardCard from "./MobileApps/MobileAppsDashboardCard.astro";
+import AppDownload from "./MobileApps/MobileAppsAppDownload.astro";
+import "../styles/Mobile Apps/StyleSheet.css";
+interface Card {
+  title: string;
+  icon: string;
+  description: string;
+  features: { icon: string; text: string }[];
+  href: string;
+}
+
+interface Props {
+  header_description: string;
+  header_sub_title1: string;
+  header_sub_title2: string;
+  cards: Card[];
+  appDownload_title: string;
+  appDownload_text: string;
+  appDownload_link_android: string;
+  appDownload_link_ios: string;
+  android_text_1: string;
+  android_text_2: string;
+  ios_text_1: string;
+  ios_text_2: string;
+}
+
+const {
+  header_description,
+  header_sub_title1,
+  header_sub_title2,
+  cards,
+  appDownload_title,
+  appDownload_text,
+  appDownload_link_android,
+  appDownload_link_ios,
+  android_text_1,
+  android_text_2,
+  ios_text_1,
+  ios_text_2,
+} = Astro.props;
+---
+
+<div class="cockpit-container">
+  <Header
+    description={header_description}
+    sub_title1={header_sub_title1}
+    sub_title2={header_sub_title2}
+  />
+
+  <div class="dashboard-grid">
+    {cards.map((card) => <DashboardCard {...card} />)}
+  </div>
+
+  <AppDownload
+    title={appDownload_title}
+    downloadText={appDownload_text}
+    googlePlayLink={appDownload_link_android}
+    appStoreLink={appDownload_link_ios}
+    android_text_1={android_text_1}
+    android_text_2={android_text_2}
+    ios_text_1={ios_text_1}
+    ios_text_2={ios_text_2}
+  />
+</div>

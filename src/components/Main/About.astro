@@ -4,6 +4,7 @@ import FloatingShapes from "../About/AboutFloatingShapes.astro";
 import HeroSection from "../About/AboutHero.astro";
 import ContentCard from "../About/AboutContentCard.astro";
 import StorySection from "../About/AboutStorySection.astro";
+import "../../styles/Main/About/StyleSheet.css";
 
 interface Props {
   heroData: {
@@ -47,70 +48,4 @@ const { heroData, cards, storyData } = Astro.props;
   </div>
 </section>
 
-<style>
-  .about-section {
-    position: relative;
-    min-height: 100vh;
-    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
-    overflow: hidden;
-  }
-
-  .content-section {
-    position: relative;
-    z-index: 2;
-    padding: 60px 20px;
-  }
-
-  .content-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    gap: 40px;
-  }
-
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-bottom: 40px;
-  }
-
-  @media (max-width: 768px) {
-    .cards-grid {
-      grid-template-columns: 1fr;
-      gap: 25px;
-    }
-  }
-</style>
-
-<script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          (entry.target as HTMLElement).style.opacity = "1";
-          (entry.target as HTMLElement).style.transform = "translateY(0)";
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
-  );
-
-  document
-    .querySelectorAll(".content-card, .story-section")
-    .forEach((el, i) => {
-      const element = el as HTMLElement;
-      element.style.opacity = "0";
-      element.style.transform = "translateY(50px)";
-      element.style.transition = `opacity 0.8s ease ${i * 0.05}s, transform 0.8s ease ${i * 0.05}s`;
-      observer.observe(element);
-    });
-
-  document.querySelectorAll(".highlight-item").forEach((el, i) => {
-    const element = el as HTMLElement;
-    element.style.opacity = "0";
-    element.style.transform = "translateX(-30px)";
-    element.style.transition = `opacity 0.6s ease ${i * 0.05 + 0.2}s, transform 0.6s ease ${i * 0.05 + 0.2}s`;
-    observer.observe(element);
-  });
-</script>
+<script src="../../Utils/MainAbout/index.ts"></script>

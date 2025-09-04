@@ -1,0 +1,26 @@
+
+  .fleet-section {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #e2e8f0 100%);
+    overflow: hidden;
+  }
+
+  .content-section {
+    position: relative;
+    z-index: 2;
+    padding: 60px 20px;
+  }
+
+  .content-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    gap: 50px;
+  }
+
+  @media (max-width: 768px) {
+    .content-container {
+      gap: 30px;
+    }
+  }

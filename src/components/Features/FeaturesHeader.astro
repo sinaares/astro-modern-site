@@ -1,5 +1,6 @@
 ---
 const { title, description } = Astro.props;
+import "../../styles/Features/FeatuerHeader/StyleSheet.css";
 ---
 
 <div class="section-header">
@@ -8,60 +9,3 @@ const { title, description } = Astro.props;
   <p>{description}</p>
   <div class="header-line"></div>
 </div>
-
-<style>
-  .section-header {
-    text-align: center;
-    margin-bottom: 6rem;
-    position: relative;
-  }
-
-  .header-decoration {
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, #0ea5e9, #3b82f6, #0ea5e9);
-    margin: 0 auto 2rem;
-    border-radius: 2px;
-    animation: shimmer 3s ease-in-out infinite;
-  }
-
-  .section-header h2 {
-    font-size: clamp(2.75rem, 5vw, 4.5rem);
-    font-weight: 900;
-    background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #1d4ed8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
-  }
-
-  .section-header p {
-    font-size: 1.4rem;
-    color: #475569;
-    margin-bottom: 2rem;
-    font-weight: 400;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .header-line {
-    width: 150px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-    margin: 0 auto;
-    opacity: 0.6;
-  }
-
-  @keyframes shimmer {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.7;
-      transform: scaleX(1.1);
-    }
-  }
-</style>

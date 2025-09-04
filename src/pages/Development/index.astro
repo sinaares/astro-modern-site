@@ -1,0 +1,119 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Development from "../../components/Development.astro";
+
+const softwareDevelopmentData = {
+  main_title: "Software Development Process",
+  highlight_title: "How It Works?",
+  description:
+    "Bring your projects to life quickly and securely with modern software development tools and methodologies. Discover how our process works in 4 steps.",
+  development_steps: [
+    {
+      title: "Planning and Analysis",
+      description:
+        "We define your project requirements, analyze user needs, and create the most suitable solution roadmap.",
+      icon: `<path fill="#000000" d="M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h18v2H3v-2zm0 4h18v2H3v-2z"></path>`,
+      viewBox: "0 0 24 24",
+    },
+    {
+      title: "Design",
+      description:
+        "Our UI/UX team designs user-friendly and aesthetic interfaces, always prioritizing user experience.",
+      icon: `<path d="M12 2L15 8H9L12 2zm0 4L9 14H15L12 6zM3 18h18v2H3v-2z"></path>`,
+      viewBox: "0 0 24 24",
+    },
+    {
+      title: "Development",
+      description:
+        "Our software developers code your application using modern programming languages and frameworks.",
+      icon: `<path d="M4 4h16v16H4V4zm2 2v12h12V6H6z"></path>`,
+      viewBox: "0 0 24 24",
+    },
+    {
+      title: "Testing and Deployment",
+      description:
+        "Your product is carefully tested, bugs are fixed, and then it is securely delivered to users.",
+      icon: `<path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15l-5-5 1.41-1.41L13 14.17l6.59-6.59L21 9z"></path>`,
+      viewBox: "0 0 24 24",
+      showDownloadButton: true,
+    },
+  ],
+  app_download_title: "Download Our Tools",
+  app_download_subtitle:
+    "Access our project management and development tools anytime, anywhere. Tasks, notifications, and reports are at your fingertips.",
+  app_features: [
+    "Real-time project tracking",
+    "Instant notifications",
+    "Detailed reports",
+    "User-friendly interface",
+  ],
+  playStoreLink:
+    "https://play.google.com/store/apps/details?id=com.example.devapp",
+  playStoreBadgeSrc:
+    "https://play.google.com/intl/tr/badges/static/images/badges/tr_badge_web_generic.png",
+  appStoreLink: "https://apps.apple.com/app/example-dev-app/id123456789",
+  appStoreBadgeSrc:
+    "https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg",
+  diagram_icons: [
+    {
+      name: "planning",
+      path: "M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h18v2H3v-2zm0 4h18v2H3v-2z",
+      type: "planning",
+    },
+    {
+      name: "design",
+      path: "M12 2L15 8H9L12 2zm0 4L9 14H15L12 6zM3 18h18v2H3v-2z",
+      type: "design",
+    },
+    {
+      name: "development",
+      path: "M4 4h16v16H4V4zm2 2v12h12V6H6z",
+      type: "development",
+    },
+    {
+      name: "testing",
+      path: "M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15l-5-5 1.41-1.41L13 14.17l6.59-6.59L21 9z",
+      type: "testing",
+    },
+  ],
+  features_steps: [
+    {
+      title: "Code Review",
+      description: "Improve code quality in your projects and prevent errors.",
+      icon: `<path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10,10-4.48,10-10S17.52,2,12,2zm0,18c-4.41,0-8-3.59-8-8s3.59-8,8-8,8,3.59,8,8-3.59,8-8,8z"></path>`,
+    },
+    {
+      title: "Version Control",
+      description: "Track code changes and share with your team.",
+      icon: `<path d="M12,2a10,10 0 0,0-7,17l1-1a8,8 0 1,1,12,0l1,1A10,10 0 0,0 12,2z"></path>`,
+    },
+    {
+      title: "Instant Notifications",
+      description: "Stay updated with real-time project developments.",
+      icon: `<path d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.19 14,4.29 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19Z"></path>`,
+    },
+  ],
+  features_title: "Custom Software Features",
+  features_subtitle: "The core advantages this system offers",
+};
+---
+
+<Layout title="TNB Mobil | Vehicle Tracking System">
+  <Development
+    title_header={softwareDevelopmentData.main_title}
+    highlight_header={softwareDevelopmentData.highlight_title}
+    description_header={softwareDevelopmentData.description}
+    working_steps={softwareDevelopmentData.development_steps}
+    appDownload_title={softwareDevelopmentData.app_download_title}
+    appDownload_subtitle={softwareDevelopmentData.app_download_subtitle}
+    appDownload_features={softwareDevelopmentData.app_features}
+    playStoreLink={softwareDevelopmentData.playStoreLink}
+    playStoreBadgeSrc={softwareDevelopmentData.playStoreBadgeSrc}
+    appStoreLink={softwareDevelopmentData.appStoreLink}
+    appStoreBadgeSrc={softwareDevelopmentData.appStoreBadgeSrc}
+    diagram_icons={softwareDevelopmentData.diagram_icons}
+    features_steps={softwareDevelopmentData.features_steps}
+    features_title={softwareDevelopmentData.features_title}
+    features_subtitle={softwareDevelopmentData.features_subtitle}
+  />
+</Layout>
